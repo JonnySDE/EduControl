@@ -1,0 +1,301 @@
+/* =========================================
+   1. CONFIGURACIÓN GLOBAL Y FUENTES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow: hidden; /* Evita barras de desplazamiento laterales */
+}
+
+/* =========================================
+   2. ESTRUCTURA PRINCIPAL (LAYOUT)
+   ========================================= */
+.contenedor-principal {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* =========================================
+   3. PANEL IZQUIERDO (AZUL - BRANDING)
+   ========================================= */
+.panel-izquierdo {
+    flex: 1;
+    background-color: #0F2D52;
+    position: relative; /* Contenedor padre para los iconos absolutos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; /* Recorta los iconos gigantes que salen del borde */
+}
+
+/* --- ESTILO BASE PARA TODOS LOS ICONOS DE FONDO --- */
+.icono-fondo {
+    position: absolute;
+    opacity: 0.18;
+    z-index: 1; /* Se mantienen detrás del texto principal */
+    pointer-events: none; /* No interfieren si el usuario hace clic */
+}
+
+/* --- POSICIONAMIENTO DE ICONOS (Usando % para ser responsivos) --- */
+
+/* Arriba izquierda (Campana) */
+.campana {
+    width: 250px; /* Aumentamos el tamaño de 130px a 170px */
+    top: 6%; 
+    left: 6%;
+    transform: rotate(-10deg);
+}
+
+/* Arriba derecha (Lápiz) */
+.lapiz {
+    width: 200px;
+    top: 6%;
+    right: 8%;
+    transform: rotate(15deg);
+}
+
+/* Centro izquierda (Hoja) */
+.hoja {
+    width: 135px;
+    top: 40%;
+    left: -2%; /* Ligeramente fuera del borde para dar efecto de corte */
+    transform: rotate(-25deg);
+}
+
+/* Centro derecha (Escuela) */
+.escuela {
+    width: 170px;
+    top: 45%;
+    right: -2%;
+    transform: rotate(18deg);
+}
+
+/* Abajo derecha (Mochila) */
+.mochila {
+    width: 170px;
+    bottom: 5%;
+    right: 8%;
+    transform: rotate(-10deg);
+}
+
+/* Birrete gigante (Base izquierda) */
+.graduado {
+    width: 320px; 
+    bottom: -1%; /* Lo acercamos a 0 para que no se esconda por abajo */
+    left: -1%;   /* Lo acercamos a 0 para que no se esconda por la izquierda */
+    opacity: 0.20;
+    transform: rotate(-15deg);
+}
+
+/* --- CONTENIDO CENTRAL (LOGO Y TEXTO EDUCONTROL) --- */
+.mensaje-bienvenida {
+    z-index: 2; /* Siempre por encima de los iconos de fondo */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icono-centro {
+    width: 120px; 
+    margin-bottom: 25px;
+}
+
+.mensaje-bienvenida h1 {
+    font-weight: 300; /* Letra delgada para "Bienvenido a" */
+    font-size: 2.8rem;
+    line-height: 1.2;
+}
+
+.texto-resaltado {
+    font-weight: 800; /* Letra extra gruesa para el nombre del sistema */
+    font-size: 4.2rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* =========================================
+   4. PANEL DERECHO (BLANCO - LOGIN FORM)
+   ========================================= */
+.panel-derecho {
+    flex: 1;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta-login {
+    background-color: white;
+    padding: 60px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    width: 90%;
+    max-width: 550px;
+    text-align: center;
+}
+
+.tarjeta-login h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* --- SELECTOR DE ROLES (Director / Docente) --- */
+.selector-rol {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.boton-rol {
+    padding: 8px 30px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s; /* Animación suave al cambiar de estado */
+}
+
+.boton-rol.activo {
+    border-color: #0F2D52;
+    color: #153258;
+    box-shadow: 0 0 0 1px #0F2D52; /* Doble borde visual para destacar */
+}
+
+/* --- INPUTS DEL FORMULARIO --- */
+.grupo-input {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.grupo-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #222;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.enlace-olvido {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    color: #153258;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+/* --- BOTÓN DE ENVIAR --- */
+.boton-ingresar {
+    padding: 12px 45px;
+    background-color: #153258;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.boton-ingresar:hover {
+    background-color: #0d213a; /* Azul más oscuro al pasar el ratón */
+}
+
+
+
+
+
+/* ESTILOS ADICIONALES PARA LA VISTA 2 DE RECUPERAR CONTRASEÑA*/
+/* =========================================*/
+.contenedor-icono-circular {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0; /* Gris muy claro simulando el círculo de Figma */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto; /* Centrado automático y espacio inferior */
+}
+
+.contenedor-icono-circular img {
+    width: 50px; /* Ajusta este valor dependiendo de cómo exportes el SVG */
+    height: auto;
+}
+
+/* Texto descriptivo de instrucciones */
+.texto-instruccion {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    text-align: left; /* Alineado a la izquierda según tu diseño */
+}
+
+/* Botón modificado para incluir icono (Flexbox) */
+.boton-con-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    width: 100%; /* Para que ocupe todo el ancho */
+    margin-bottom: 25px;
+}
+
+.boton-con-icono img {
+    width: 20px;
+    height: auto;
+}
+
+/* Enlace inferior para volver al login */
+.enlace-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #153258;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.enlace-volver:hover {
+    color: #0d213a;
+}
+
+.enlace-volver img {
+    width: 18px;
+    height: auto;
+}
