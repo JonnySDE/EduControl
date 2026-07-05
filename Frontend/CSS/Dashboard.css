@@ -15,14 +15,13 @@
 .dashboard-body {
     display: grid;
     grid-template-columns: 250px 1fr;
-    /* Cambiamos el 70px por 'auto' para que el footer se adapte al contenido */
-    grid-template-rows: 80px 1fr auto; 
+    grid-template-rows: 80px 1fr auto;
     grid-template-areas:
         "header header"
         "sidebar main"
         "footer footer";
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: #0F2D52; 
 }
 
 /* =========================================
@@ -35,20 +34,22 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    border-bottom: 4px solid #fff; /* Borde blanco inferior si es necesario */
+    border-bottom: 4px solid #fff;
 }
 
 .logo-header img {
-    height: 50px;
+    height: 70px; /* Aumentamos un poco el logo principal */
 }
 
 .logos-institucionales {
     display: flex;
     gap: 20px;
+    align-items: center; /* Alineación vertical centrada */
 }
 
 .logos-institucionales img {
-    height: 50px;
+    height: 75px; /* Aumentamos de 50px a 60px para mayor presencia */
+    width: auto;  /* Mantiene la proporción original */
 }
 
 /* =========================================
@@ -64,7 +65,7 @@
 .menu-lateral {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Aumentado de 10px a 20px para separar más los módulos */
+    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
 }
 
 .item-menu {
@@ -73,7 +74,7 @@
     gap: 15px;
     padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
     text-decoration: none;
-    color: #153258;
+    color: #0F2D52;
     font-weight: 600;
     font-size: 1.05rem;
     transition: background 0.3s;
@@ -168,7 +169,7 @@
 .dato-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
     text-align: left;
 }
 
@@ -182,7 +183,7 @@
     line-height: 1.5;
 }
 .separador-vertical {
-    width: 2px;
+    width: 4px;
     background-color: #e0e0e0;
     margin: 0 20px;
 }
@@ -209,7 +210,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end; /* Mantiene el contenido a la derecha */
-    padding: 10px 40px; /* Padding vertical generoso para que no toque los bordes */
+    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
     color: white;
     font-size: 0.75rem;
     text-align: right;
@@ -217,6 +218,6 @@
 }
 
 .dashboard-footer img {
-    height: 40px; 
+    height: 60px; 
     margin-right: 20px; /* Espacio entre el logo y el texto */
 }
