@@ -10,9 +10,9 @@ import com.educontrol.controllers.AlumnoController;
 public class Main {
 
     // Datos de conexión a MySQL - AJUSTA ESTOS VALORES
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/educontrol";
-    private static final String DB_USER = "EduControlUser";
-    private static final String DB_PASSWORD = "253EduControlMJC";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/educontroldb";
+    private static final String DB_USER = "educontrol";
+    private static final String DB_PASSWORD = "educontroldatabe10";
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -24,7 +24,7 @@ public class Main {
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> it.anyHost()); // para que el frontend pueda pegarle sin bronca de CORS
             });
-        }).start(7000);
+        });
         AlumnoController.registrarRutas(app);
 
         // Endpoint de prueba: verifica que la conexión a la BD funcione
@@ -37,6 +37,7 @@ public class Main {
                 ctx.status(500).result("Error de conexión: " + e.getMessage());
             }
         });
+        app.start(7000);
 
         System.out.println("Servidor corriendo en http://localhost:7000");
     }

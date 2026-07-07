@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Aplicar a todo el sistema */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estructura grid del dashboard */
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52; /* evita la línea blanca al final de la página */
+}
+
+/* --- Header --- */
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px;
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logos-institucionales img {
+    height: 75px;
+    width: auto;
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #f1f3f6; /* Gris de tu menú lateral */
+    border-right: 2px solid #e0e0e0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+}
+
+.item-menu {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
+    border-radius: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    border: none;             /* que ningún estado agregue borde */
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu.active {
+    background-color: rgba(18, 84, 166, 0.6);
+    color: #000;
+    font-weight: 600;        /* ojo: bold puede cambiar el ancho del texto, ver nota abajo */
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+/* --- Contenido principal: contenedor base neutro ---
+   IMPORTANTE: no lleva align-items aquí, para que cada vista
+   decida su propio comportamiento (centrado o alineado a la izquierda)
+   sin romper a las demás. Ver sección 2 para el ajuste de esta vista. */
+.dashboard-main {
+    grid-area: main;
+    padding: 35px 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+/* --- Footer --- */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Mantiene el contenido a la derecha */
+    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 85px; /* Asegura un tamaño base */
+}
+
+.dashboard-footer img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+/* SECCION PARA LA VISTA DE ALUMNOS*/
+
+.titulo-perfil {
+    font-size: 3rem;
+    color: #0F2D52;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    align-self: flex-start;
+}
+.contenedor-gestion {
+    width: 95%; /* Ocupa casi todo el ancho disponible */
+    max-width: none; /* Quitamos el límite de 1000px */
+    margin: 30px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Controles Superiores (Alineación exacta) --- */
+.controles-superiores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.buscar-grupo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.6rem;
+    color: black;
+    margin-left: 30px;
+}
+
+.buscar-grupo input {
+    font-size: 1.5rem;
+    padding: 15px 80px; /* Más grandes */
+    border: 1px solid #777;
+    border-radius: 8px;
+    width: 350px; /* Más ancho */
+}
+
+.btn-agregar {
+    background-color: #3BC66E;
+    color: black;
+    font-size: 1.6rem;
+    padding: 10px 80px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+/* --- Tabla (Igual a Figma) --- */
+.tabla-alumnos {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border: 1px solid #000;
+    margin-left: 30px;
+    margin-top: 70px;
+}
+
+.tabla-alumnos th {
+    background-color: #8daed5;
+    color: #000;
+    padding: 20px; /* Aumentado para mayor altura */
+    border: 1px solid #000;
+    font-weight: 600;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.6rem; /* Un poco más grande el texto */
+}
+
+.tabla-alumnos td {
+    padding: 10px; /* Aumentado para que la tabla sea más alta y legible */
+    border: 1px solid #000;
+    text-align: center;
+    font-size: 1.5rem;
+    
+}
+
+/* 4. Iconos: Escalamos un poco los iconos para que no se vean pequeños */
+.acciones-celda {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Más separación entre iconos */
+}
+
+.acciones-celda img {
+    width: 60px; /* Iconos más grandes */
+    height: 60px;
+    cursor: pointer;
+}
+
+.tabla-contenedor {
+    max-height: 400px;
+    overflow-y: auto;   /* Barra vertical activada */
+    overflow-x: hidden; /* Esto ELIMINA la barra horizontal */
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box; /* Crucial: incluye el padding y borde en el ancho total */
+    position: relative;
+}
+
+/* FORMULARIO AGREGAR ALUMNO */
+.formulario-alumno {
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px; /* Aumentamos de 500px a 800px para que sea más ancho */
+    width: 90%;      /* Ocupa el 90% del espacio disponible */
+    margin-top: -10px;
+    margin-left: 30px;
+    padding: 40px;   /* Más espacio interno */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.formulario-alumno input {
+    margin-bottom: 25px; /* Más espacio entre campos */
+    padding: 10px;       /* Campos más altos/cómodos */
+    font-size: 1.4rem;   /* Texto más grande */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;         /* Asegura que ocupen todo el ancho del formulario */
+    box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+}
+.acciones-form { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 20px; 
+}
+
+.btn-guardar { 
+    display: flex;
+    align-items: center;
+    background: #22C55E; 
+    padding: 10px 80px; 
+    border: none; 
+    cursor: pointer; 
+    gap: 50px;
+    border-radius: 5px; 
+    font-size: 1.60rem;
+}
+.btn-cancelar { 
+    display: flex;
+    align-items: center;
+    background: #FF3B3B; 
+    padding: 10px 80px; 
+    border: none;
+    cursor: pointer; 
+    gap: 50px;
+    border-radius: 5px; 
+    font-size: 1.60rem;
+}
+
+/* MENSAJES DE ALERTA */
+/* Contenedor de notificaciones */
+/* Contenedor que inyectaremos en el body */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Estilo base del toast */
+.mensaje-toast {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    min-width: 300px;
+    max-width: 400px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    animation: entrada-toast 0.3s ease forwards;
+}
+
+/* Bordes laterales para el tipo de mensaje */
+.toast-advertencia { border-left: 6px solid #F4C91A; }
+.toast-exito { border-left: 6px solid #1E6B30; }
+
+/* Ajuste del icono dentro del toast */
+.mensaje-toast img {
+    width: 32px; 
+    height: 32px;
+    flex-shrink: 0;
+}
+
+/* Animaciones */
+@keyframes entrada-toast {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
