@@ -26,3 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aquí iría tu lógica de conexión con la base de datos
     });
 });
+

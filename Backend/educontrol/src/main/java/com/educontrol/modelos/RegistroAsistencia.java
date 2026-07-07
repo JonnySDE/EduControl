@@ -14,7 +14,7 @@ public class RegistroAsistencia {
     }
 
     public RegistroAsistencia(int idRegistroAsis, String estado, LocalDate fecha,
-                               int matricula, int idConfigAsistencia, int idUsuario) {
+                            int matricula, int idConfigAsistencia, int idUsuario) {
         this.idRegistroAsis = idRegistroAsis;
         this.estado = estado;
         this.fecha = fecha;

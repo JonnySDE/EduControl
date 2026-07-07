@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EduControl - Cambiar Foto</title>
+    <link rel="stylesheet" href="../../CSS/cuenta.css">
+</head>
+<body class="dashboard-body vista-editar-foto">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <aside class="dashboard-sidebar">
+        <nav class="menu-lateral">
+            <a href="../Cuenta/Cuenta.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes
+            </a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-main">
+        <h2 class="titulo-perfil">Mi perfil</h2>
+        
+        <div class="contenedor-editar-foto">
+            <div class="columna-izquierda">
+                <div class="foto-preview-box">
+                    <img id="preview-foto" src="../../Img/avatar-default.png" alt="Vista previa">
+                </div>
+                <p class="texto-foto-actual">Foto actual</p>
+            </div>
+
+            <div class="columna-derecha">
+                <p class="label-cambiar-foto">Cambiar Foto</p>
+                
+                <input type="file" id="input-archivo" accept="image/*" style="display: none;">
+                <label for="input-archivo" class="btn-subir">
+                    <img src="../../Img/IconosCuenta/subirfoto.svg" alt="Subir"> Subir foto desde el dispositivo
+                </label>
+            
+                <div class="botones-accion">
+                    <a href="Cuenta.html" class="btn-cancelar">
+                        <img src="../../Img/IconosCuenta/cancelar.svg" alt="Cancelar"> Cancelar
+                    </a>
+                    <button id="btn-guardar" class="btn-guardar">
+                        <img src="../../Img/IconosCuenta/guardar.svg" alt="Guardar"> Guardar
+                    </button>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/logoUP.png" alt="Logo UP">
+        <p>Ingeniería en Tecnologías de la Información...<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+    <script src="../../JS/perfil.js"></script>
+</body>
+</html>

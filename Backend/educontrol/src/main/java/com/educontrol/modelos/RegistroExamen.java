@@ -15,7 +15,7 @@ public class RegistroExamen {
     }
 
     public RegistroExamen(int idRegistroExamen, LocalDate fecha, String nombreExamen,
-                           int matricula, int idExamen, int idUsuario, int idCampoFormativo) {
+                        int matricula, int idExamen, int idUsuario, int idCampoFormativo) {
         this.idRegistroExamen = idRegistroExamen;
         this.fecha = fecha;
         this.nombreExamen = nombreExamen;
