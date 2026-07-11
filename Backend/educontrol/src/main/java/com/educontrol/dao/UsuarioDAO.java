@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UsuarioDAO {
 
@@ -43,23 +44,26 @@ public class UsuarioDAO {
         return null;
     }
 
+
     public void crear(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuario (NombreUsuario, Nombre, ApellidoPaterno, ApellidoMaterno, Contrasena, Rol) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+            "VALUES (?, ?, ?, ?, ?, ?)";
+
+        String contrasenaHasheada = BCrypt.hashpw(usuario.getContrasena(), BCrypt.gensalt());
 
         try (Connection conn = Main.conectar();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getNombre());
+            stmt.setString(2, usuario.getNombre());   
             stmt.setString(3, usuario.getApellidoPaterno());
             stmt.setString(4, usuario.getApellidoMaterno());
-            stmt.setString(5, usuario.getContrasena());
+            stmt.setString(5, contrasenaHasheada);
             stmt.setString(6, usuario.getRol());
 
             stmt.executeUpdate();
-        }
-    }
+        }      
+}
 
     public void actualizar(Usuario usuario) throws SQLException {
         String sql = "UPDATE usuario SET NombreUsuario = ?, Nombre = ?, ApellidoPaterno = ?, " +
@@ -102,4 +106,20 @@ public class UsuarioDAO {
             rs.getString("Rol")
         );
     }
+
+    public Usuario buscarPorNombreUsuario(String nombreUsuario) throws SQLException {
+    String sql = "SELECT * FROM usuario WHERE NombreUsuario = ?";
+
+    try (Connection conn = Main.conectar();
+        PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, nombreUsuario);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            return mapearUsuario(rs);
+        }
+    }
+    return null;
+}
 }

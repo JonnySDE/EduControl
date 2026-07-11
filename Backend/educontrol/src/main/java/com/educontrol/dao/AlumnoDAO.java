@@ -17,8 +17,8 @@ public class AlumnoDAO {
         String sql = "SELECT * FROM alumno";
 
         try (Connection conn = Main.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery()) {
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 lista.add(mapearAlumno(rs));
@@ -31,7 +31,7 @@ public class AlumnoDAO {
         String sql = "SELECT * FROM alumno WHERE Matricula = ?";
 
         try (Connection conn = Main.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, matricula);
             ResultSet rs = stmt.executeQuery();
@@ -44,36 +44,30 @@ public class AlumnoDAO {
     }
 
     public void crear(Alumno alumno) throws SQLException {
-        String sql = "INSERT INTO alumno (Matricula, Nombre, ApellidoPaterno, ApellidoMaterno, NumeroLista, idGrupo) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO alumno (Matricula, Nombre, ApellidoPaterno, ApellidoMaterno) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, alumno.getMatricula());
             stmt.setString(2, alumno.getNombre());
             stmt.setString(3, alumno.getApellidoPaterno());
             stmt.setString(4, alumno.getApellidoMaterno());
-            stmt.setInt(5, alumno.getNumeroLista());
-            stmt.setInt(6, alumno.getIdGrupo());
 
             stmt.executeUpdate();
         }
     }
 
     public void actualizar(Alumno alumno) throws SQLException {
-        String sql = "UPDATE alumno SET Nombre = ?, ApellidoPaterno = ?, ApellidoMaterno = ?, " +
-                    "NumeroLista = ?, idGrupo = ? WHERE Matricula = ?";
+        String sql = "UPDATE alumno SET Nombre = ?, ApellidoPaterno = ?, ApellidoMaterno = ? WHERE Matricula = ?";
 
         try (Connection conn = Main.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, alumno.getNombre());
             stmt.setString(2, alumno.getApellidoPaterno());
             stmt.setString(3, alumno.getApellidoMaterno());
-            stmt.setInt(4, alumno.getNumeroLista());
-            stmt.setInt(5, alumno.getIdGrupo());
-            stmt.setInt(6, alumno.getMatricula());
+            stmt.setInt(4, alumno.getMatricula());
 
             stmt.executeUpdate();
         }
@@ -83,7 +77,7 @@ public class AlumnoDAO {
         String sql = "DELETE FROM alumno WHERE Matricula = ?";
 
         try (Connection conn = Main.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, matricula);
             stmt.executeUpdate();
@@ -95,9 +89,7 @@ public class AlumnoDAO {
             rs.getInt("Matricula"),
             rs.getString("Nombre"),
             rs.getString("ApellidoPaterno"),
-            rs.getString("ApellidoMaterno"),
-            rs.getInt("NumeroLista"),
-            rs.getInt("idGrupo")
+            rs.getString("ApellidoMaterno")
         );
     }
 }
