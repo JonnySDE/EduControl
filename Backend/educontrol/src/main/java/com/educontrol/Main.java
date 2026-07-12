@@ -26,17 +26,10 @@ import com.educontrol.controllers.PromedioController;
 
 public class Main {
 
-<<<<<<< HEAD
-    // Datos de conexión a MySQL - AJUSTA ESTOS VALORES
+    // Datos de conexión a MySQL
     private static final String DB_URL = "jdbc:mysql://localhost:3306/educontroldb";
     private static final String DB_USER = "educontrol";
     private static final String DB_PASSWORD = "educontroldatabe10";
-=======
-    // Datos de conexión a MySQL
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/educontrol";
-    private static final String DB_USER = "EduControlUser";
-    private static final String DB_PASSWORD = "253EduControlMJC";
->>>>>>> f969024d27c1f9c9da313bd312fa2389593bb8e8
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -46,7 +39,7 @@ public class Main {
 
         Javalin app = Javalin.create(config -> {
             config.bundledPlugins.enableCors(cors -> {
-                cors.addRule(it -> it.anyHost()); // para que el frontend pueda pegarle sin bronca de CORS
+                cors.addRule(it -> it.anyHost()); // para que el frontend pueda pegarle sin problemas de CORS
             });
         });
         AlumnoController.registrarRutas(app);

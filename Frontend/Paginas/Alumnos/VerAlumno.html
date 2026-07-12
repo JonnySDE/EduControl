@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduControl - Ver Información</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>EduControl - Ver Alumno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/alumnos.css">
 </head>
 <body class="dashboard-body">
@@ -26,7 +24,7 @@
             <a href="../Cuenta/Cuenta.html" class="item-menu">
                 <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
             </a>
-            <a href="#" class="item-menu">
+            <a href="../Alumnos/Alumnos.html" class="item-menu">
                 <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
             </a>
             <a href="#" class="item-menu">
@@ -48,34 +46,52 @@
     </aside>
 
     <main class="dashboard-main">
-        <h2 class="titulo-perfil">Gestión de alumnos</h2>
+        <div class="header-main">
+            <h2 class="titulo-perfil">Información del alumno</h2>
+        </div>
         
-        <div class="contenedor-gestion">
-            <div class="controles-superiores">
-                <div class="buscar-grupo">
-                    <label>Buscar: </label>
-                    <input type="text" placeholder="">
-                    <img src="../../Img/IconosAlumnos/lupa.svg">
-                </div>
-                <button class="btn-agregar" onclick="window.location.href='RegistrarAlumno.html'">
-                    <img src="../../Img/IconosAlumnos/agregar.svg"> Agregar Alumno
-                </button>
-            </div>
+        <div class="contenedor-informacion">
+        <div class="campo-nombre">
+            <label>Alumno:</label>
+            <div id="info-nombre" class="campo-dato">Cargando...</div>
+        </div>
 
-            <div class="tabla-contenedor">
-                <table class="tabla-alumnos">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Grupo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-cuerpo">
-                    </tbody>
-                </table>
-            </div>
-            </div>
+        <div>
+            <label>Grupo:</label>
+            <div id="info-grupo" class="campo-dato">---</div>
+        </div>
+        <div>
+            <label>No. Lista:</label>
+            <div id="info-lista" class="campo-dato">---</div>
+        </div>
+
+        <div>
+            <label>Tareas:</label>
+            <div id="info-tareas" class="campo-dato">---</div>
+        </div>
+        <div>
+            <label>Disciplina:</label>
+            <div id="info-disciplina" class="campo-dato">---</div>
+        </div>
+
+        <div>
+            <label>Asistencia:</label>
+            <div id="info-asistencia" class="campo-dato">---</div>
+        </div>
+        <div>
+            <label>Examen:</label>
+            <div id="info-examen" class="campo-dato">---</div>
+        </div>
+
+        <div>
+            <label>Participación:</label>
+            <div id="info-participacion" class="campo-dato">---</div>
+        </div>
+        <div>
+            <label>Promedio final:</label>
+            <div id="info-promedio" class="campo-dato">---</div>
+        </div>
+    </div>
     </main>
 
     <footer class="dashboard-footer">
@@ -93,9 +109,6 @@
         </div>
     </div>
 
-    <div id="toast-container"></div>
-
-    <script src="../../JS/alumnos.js"></script>
-    <div id="toast-container"></div>
+    <script src="../../JS/detallesAlumno.js"></script>
 </body>
 </html>

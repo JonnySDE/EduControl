@@ -1,5 +1,6 @@
-// Variable global
+// Variables global
 let listaAlumnosOriginal = [];
+let matriculaAEliminar = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Sidebar activo (funciona en ambas páginas)
@@ -138,19 +139,43 @@ if (formRegistrar) {
 }
 
 // --- ACCIONES ---
+// Esta función se dispara al dar clic en el icono del bote de basura
 function eliminarAlumno(matricula) {
-    if(confirm("¿Estás seguro de eliminar este alumno?")) {
-        fetch(`http://localhost:7000/alumnos/${matricula}`, { method: 'DELETE' })
-        .then(res => {
-            if(res.ok) {
-                mostrarMensaje("Alumno eliminado correctamente", "exito");
-                cargarAlumnos();
-            } else {
-                mostrarMensaje("Error al eliminar", "error");
-            }
-        });
-    }
+    matriculaAEliminar = matricula; // Guardamos la matricula
+    document.getElementById('modal-eliminar').style.display = 'flex'; // Mostramos el modal
 }
 
-function verAlumno(matricula) { alert("Ver: " + matricula); }
-function editarAlumno(matricula) { alert("Editar: " + matricula); }
+// Lógica de los botones del modal (agregado fuera de la función)
+document.getElementById('btn-cancelar').addEventListener('click', () => {
+    document.getElementById('modal-eliminar').style.display = 'none';
+});
+
+document.getElementById('btn-confirmar').addEventListener('click', async () => {
+    if (!matriculaAEliminar) return;
+
+    try {
+        const response = await fetch(`http://localhost:7000/alumnos/${matriculaAEliminar}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            mostrarMensaje("Alumno eliminado correctamente", "exito");
+            document.getElementById('modal-eliminar').style.display = 'none';
+            cargarAlumnos(); // Refresca la tabla
+        } else {
+            mostrarMensaje("Error al eliminar el alumno", "error");
+            document.getElementById('modal-eliminar').style.display = 'none';
+        }
+    } catch (error) {
+        mostrarMensaje("Error de conexión con el servidor", "error");
+        document.getElementById('modal-eliminar').style.display = 'none';
+    }
+});
+
+function verAlumno(matricula) {
+    // Te lleva a la página de detalles pasando la matrícula
+    window.location.href = `VerAlumno.html?matricula=${matricula}`;
+}
+function editarAlumno(matricula) { 
+    window.location.href = `EditarAlumno.html?matricula=${matricula}`; 
+}

@@ -329,3 +329,139 @@
     from { opacity: 0; transform: translateX(30px); }
     to { opacity: 1; transform: translateX(0); }
 }
+
+/* MODAL PARA ELIMINAR ALUMNO*/
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.modal-contenido {
+    background: #ffffff;
+    padding: 60px 100PX;
+    border-radius: 22px;
+    text-align: center;
+    width: 90%;
+    max-width: 580px;
+    border: 3px solid #FF3B3B;
+    box-shadow: 0 0 0 6px rgba(255, 77, 109, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-contenido h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.acciones-modal {
+    margin-top: 35px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.acciones-modal button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 28px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.acciones-modal button img {
+    width: 18px;
+    height: 18px;
+}
+
+.acciones-modal button:hover {
+    filter: brightness(0.95);
+}
+
+.acciones-modal button:active {
+    transform: scale(0.97);
+}
+
+.btn-cancelar {
+    background-color: #FF3B3B;
+}
+
+.btn-confirmar {
+    background-color: #6098F7;
+}
+
+/* VER INFORMNACION DEL ALUMNO*/
+.contenedor-informacion {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 95%;          /* Ocupa casi todo el ancho de la pantalla */
+    margin: 0;   /* Centrado */
+}
+
+/* Etiquetas más grandes y destacadas */
+label {
+    font-size: 1.5rem;      /* Texto más grande */
+    font-weight: 700;
+    color: #1a2a3a;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Cajas de datos muy grandes y cómodas */
+.campo-dato {
+    background-color: #f4f7f9;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    padding: 20px;          /* Más altura para que el dato se vea alargado */
+    font-size: 1.4rem;      /* Dato grande */
+    color: #2d3748;
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    box-sizing: border-box;
+}
+
+/* PARA EDITAR ALUMNO */
+.contenedor-botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-guardar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-cancelarEdicion {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}

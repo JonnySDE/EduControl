@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduControl - Ver Información</title>
+    <title>EduControl - Cuenta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../CSS/alumnos.css">
+    <link rel="stylesheet" href="../../CSS/Evaluacion.css">
+    
 </head>
 <body class="dashboard-body">
 
@@ -26,7 +27,7 @@
             <a href="../Cuenta/Cuenta.html" class="item-menu">
                 <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
             </a>
-            <a href="#" class="item-menu">
+            <a href="../Alumnos/Alumnos.html" class="item-menu">
                 <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
             </a>
             <a href="#" class="item-menu">
@@ -48,54 +49,46 @@
     </aside>
 
     <main class="dashboard-main">
-        <h2 class="titulo-perfil">Gestión de alumnos</h2>
-        
-        <div class="contenedor-gestion">
-            <div class="controles-superiores">
-                <div class="buscar-grupo">
-                    <label>Buscar: </label>
-                    <input type="text" placeholder="">
-                    <img src="../../Img/IconosAlumnos/lupa.svg">
-                </div>
-                <button class="btn-agregar" onclick="window.location.href='RegistrarAlumno.html'">
-                    <img src="../../Img/IconosAlumnos/agregar.svg"> Agregar Alumno
-                </button>
+        <div class="header-evaluacion">
+            <h2 class="titulo-perfil">Criterios de Evaluación</h2>
+            <div class="filtros-evaluacion">
+                <br><label>Campo Formativo:</label>
+                <select id="select-campo">
+                    <option value="">Seleccione...</option>
+                </select>
             </div>
+        </div>
 
-            <div class="tabla-contenedor">
-                <table class="tabla-alumnos">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Grupo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-cuerpo">
-                    </tbody>
-                </table>
-            </div>
-            </div>
+        <div class="tabla-contenedor-full">
+            <table class="tabla-evaluacion">
+                <thead>
+                    <tr>
+                        <th>Criterios de evaluación</th>
+                        <th>Porcentaje (%)</th>
+                    </tr>
+                </thead>
+                <tbody id="evaluacion-cuerpo">
+                    <tr><td>Tareas</td><td><input type="number" value="20"> %</td></tr>
+                    <tr><td>Asistencia</td><td><input type="number" value="20"> %</td></tr>
+                    <tr><td>Participación</td><td><input type="number" value="10"> %</td></tr>
+                    <tr><td>Disciplina</td><td><input type="number" value="20"> %</td></tr>
+                    <tr><td>Examen</td><td><input type="number" value="30"> %</td></tr>
+                    <tr class="fila-total"><td>Total</td><td>100%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="acciones-evaluacion">
+            <button class="btn-limpiar">Limpiar <img src="../../Img/IconosEvaluacion/limpiar.svg" alt="limpiar"></button>
+            <button class="btn-guardar">Guardar<img src="../../Img/IconosEvaluacion/guardar.svg" alt="guardar"></button>
+        </div>
     </main>
-
     <footer class="dashboard-footer">
         <img src="../../Img/Logos/LogoUp.png" alt="Logo Universidad">
         <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
     </footer>
-
-    <div id="modal-eliminar" class="modal-overlay" style="display: none;">
-        <div class="modal-contenido">
-            <h3>¿Estás seguro que deseas eliminar este alumno?</h3>
-            <div class="acciones-modal">
-                <button id="btn-cancelar" class="btn-cancelar"><img src="../../Img/IconosAlumnos/eliminarAlumno.svg">Cancelar</button>
-                <button id="btn-confirmar" class="btn-confirmar"><img src="../../Img/IconosAlumnos/confirmarEliminacion.svg">Confirmar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="toast-container"></div>
-
-    <script src="../../JS/alumnos.js"></script>
+    <script src="../../JS/evaluacion.js"></script>
     <div id="toast-container"></div>
 </body>
+
 </html>

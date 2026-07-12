@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Aplicar a todo el sistema */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estructura grid del dashboard */
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52; /* evita la línea blanca al final de la página */
+}
+
+/* --- Header --- */
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px;
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logos-institucionales img {
+    height: 75px;
+    width: auto;
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #f1f3f6; /* Gris de tu menú lateral */
+    border-right: 2px solid #e0e0e0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+}
+
+.item-menu {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
+    border-radius: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    border: none;             /* que ningún estado agregue borde */
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu.active {
+    background-color: rgba(18, 84, 166, 0.6);
+    color: #000;
+    font-weight: 600;        /* ojo: bold puede cambiar el ancho del texto, ver nota abajo */
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+.dashboard-main {
+    grid-area: main;
+    padding: 35px 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+/* --- Footer --- */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Mantiene el contenido a la derecha */
+    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 85px; /* Asegura un tamaño base */
+}
+
+.dashboard-footer img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+
+/* Estilos del Módulo de Evaluación */
+/* --- Estilos Generales del Contenedor --- */
+/* Layout del Header */
+.header-evaluacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+#select-campo {
+    appearance: none; /* Elimina la flecha nativa */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    font-size: 1,5rem;
+    padding: 10px 40px 10px 15px; 
+    border: 1px solid #707070;
+    border-radius: 20px; 
+    background-color: white;
+    background-image: url('../Img/IconosEvaluacion/seleccionar.svg');
+    background-repeat: no-repeat;
+    background-position: right 15px center; /* Lo posiciona a la derecha */
+    background-size: 14px; /* Ajusta el tamaño de tu icono */
+    
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+.titulo-perfil {
+    font-size: 3rem;
+    color: #0F2D52;
+    align-self: flex-start;
+}
+
+.filtros-evaluacion {
+    display: flex;
+    align-items: center; /* ESTO ALINEA TODO VERTICALMENTE */
+    gap: 80px;           /* Espacio entre el texto y el selector */
+    margin-bottom: 20px;
+    margin-left: 300px;
+    font-size: 1.5rem;
+}
+
+/* Tabla expandida */
+.tabla-contenedor-full {
+    width: 80%; /* Reduce el ancho para que no esté tan estirada */
+    margin: 0 auto; /* Centra la tabla en la pantalla */
+    border: 2px solid #000; /* Borde negro exterior */
+    border-radius: 0; /* Si quieres el estilo rígido de Figma */
+    overflow: hidden;
+}
+
+.tabla-evaluacion {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-evaluacion th, .tabla-evaluacion td {
+    border: 1px solid #000; /* Líneas divisorias negras */
+    padding: 12px;
+    text-align: center;
+}
+
+.tabla-evaluacion th {
+    background-color: #8daed5;
+    width: 50%;
+    padding: 18px;
+    font-size: 1.6rem;
+    text-align: center;
+    border: 1px solid #000; /* Asegura el borde negro */
+}
+
+.tabla-evaluacion td {
+    padding: 16px;
+    border: 1px solid #000;
+    text-align: center;
+    width: 50%; /* Asegura que la celda de datos también respete el ancho */
+    font-size: 1.5rem;
+}
+
+.evaluacion-cuerpo{
+    font-size: 1.5rem;
+}
+
+/* Botones de acción */
+.acciones-evaluacion {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 200px; /* Aumenta la separación entre botones */
+    margin-top: 40px;
+    margin-left: 450px;
+}
+
+input[type="number"] {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.5rem;
+}
+
+/* Estilo común para ambos botones */
+.btn-limpiar, .btn-guardar {
+    display: flex;
+    align-items: center;    /* Alineación vertical perfecta */
+    justify-content: center;
+    gap: 20px;              /* Espacio entre el texto y el icono */
+    padding: 12px 50px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+/* Control estricto del tamaño de los iconos */
+.btn-limpiar img, .btn-guardar img {
+    width: 40px;            /* Tamaño fijo para que no crezcan de más */
+    height: 40px;
+    vertical-align: middle; /* Ayuda extra al centrado */
+}
+
+/* Colores */
+.btn-limpiar { background-color: #E6CB37; }
+.btn-guardar { background-color: #22C55E; color: black; }
