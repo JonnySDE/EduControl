@@ -3,15 +3,17 @@ package com.educontrol.modelos;
 public class CampoFormativo {
     private int idCampoFormativo;
     private String nombre;
-    private Integer grado; // Integer (no int) porque puede ser null
+    private int grado;
+    private String cicloEscolar;
 
     public CampoFormativo() {
     }
 
-    public CampoFormativo(int idCampoFormativo, String nombre, Integer grado) {
+    public CampoFormativo(int idCampoFormativo, String nombre, int grado, String cicloEscolar) {
         this.idCampoFormativo = idCampoFormativo;
         this.nombre = nombre;
         this.grado = grado;
+        this.cicloEscolar = cicloEscolar;
     }
 
     public int getIdCampoFormativo() {
@@ -30,11 +32,19 @@ public class CampoFormativo {
         this.nombre = nombre;
     }
 
-    public Integer getGrado() {
+    public int getGrado() {
         return grado;
     }
 
-    public void setGrado(Integer grado) {
+    public void setGrado(int grado) {
         this.grado = grado;
+    }
+
+    public String getCicloEscolar() {
+        return cicloEscolar;
+    }
+
+    public void setCicloEscolar(String cicloEscolar) {
+        this.cicloEscolar = cicloEscolar;
     }
 }

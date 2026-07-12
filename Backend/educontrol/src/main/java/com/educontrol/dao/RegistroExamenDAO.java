@@ -45,8 +45,8 @@ public class RegistroExamenDAO {
     }
 
     public void crear(RegistroExamen registro) throws SQLException {
-        String sql = "INSERT INTO registro_examen (fecha, NombreExamen, Matricula, idExamen, idUsuario, idCampoFormativo) " +
-                     "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro_examen (fecha, NombreExamen, Matricula, idExamen, idUsuario, idCampoFormativo, idPeriodo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -57,6 +57,7 @@ public class RegistroExamenDAO {
             stmt.setInt(4, registro.getIdExamen());
             stmt.setInt(5, registro.getIdUsuario());
             stmt.setInt(6, registro.getIdCampoFormativo());
+            stmt.setInt(7, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
@@ -64,7 +65,7 @@ public class RegistroExamenDAO {
 
     public void actualizar(RegistroExamen registro) throws SQLException {
         String sql = "UPDATE registro_examen SET fecha = ?, NombreExamen = ?, Matricula = ?, " +
-                     "idExamen = ?, idUsuario = ?, idCampoFormativo = ? WHERE idRegistroExamen = ?";
+                     "idExamen = ?, idUsuario = ?, idCampoFormativo = ?, idPeriodo = ? WHERE idRegistroExamen = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -75,7 +76,8 @@ public class RegistroExamenDAO {
             stmt.setInt(4, registro.getIdExamen());
             stmt.setInt(5, registro.getIdUsuario());
             stmt.setInt(6, registro.getIdCampoFormativo());
-            stmt.setInt(7, registro.getIdRegistroExamen());
+            stmt.setInt(7, registro.getIdPeriodo());
+            stmt.setInt(8, registro.getIdRegistroExamen());
 
             stmt.executeUpdate();
         }
@@ -102,7 +104,8 @@ public class RegistroExamenDAO {
             rs.getInt("Matricula"),
             rs.getInt("idExamen"),
             rs.getInt("idUsuario"),
-            rs.getInt("idCampoFormativo")
+            rs.getInt("idCampoFormativo"),
+            rs.getInt("idPeriodo")
         );
     }
 }

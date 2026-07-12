@@ -45,8 +45,8 @@ public class RegistroDisciplinaDAO {
     }
 
     public void crear(RegistroDisciplina registro) throws SQLException {
-        String sql = "INSERT INTO registro_disciplina (Observaciones, Comportamiento, fecha, Matricula, idConfigDisciplina, idUsuario) " +
-                     "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro_disciplina (Observaciones, Comportamiento, fecha, Matricula, idConfigDisciplina, idUsuario, idPeriodo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -57,6 +57,7 @@ public class RegistroDisciplinaDAO {
             stmt.setInt(4, registro.getMatricula());
             stmt.setInt(5, registro.getIdConfigDisciplina());
             stmt.setInt(6, registro.getIdUsuario());
+            stmt.setInt(7, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
@@ -64,7 +65,7 @@ public class RegistroDisciplinaDAO {
 
     public void actualizar(RegistroDisciplina registro) throws SQLException {
         String sql = "UPDATE registro_disciplina SET Observaciones = ?, Comportamiento = ?, fecha = ?, " +
-                     "Matricula = ?, idConfigDisciplina = ?, idUsuario = ? WHERE idRegistroDisciplina = ?";
+                     "Matricula = ?, idConfigDisciplina = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroDisciplina = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -75,7 +76,8 @@ public class RegistroDisciplinaDAO {
             stmt.setInt(4, registro.getMatricula());
             stmt.setInt(5, registro.getIdConfigDisciplina());
             stmt.setInt(6, registro.getIdUsuario());
-            stmt.setInt(7, registro.getIdRegistroDisciplina());
+            stmt.setInt(7, registro.getIdPeriodo());
+            stmt.setInt(8, registro.getIdRegistroDisciplina());
 
             stmt.executeUpdate();
         }
@@ -102,7 +104,8 @@ public class RegistroDisciplinaDAO {
             fechaSql != null ? fechaSql.toLocalDate() : null,
             rs.getInt("Matricula"),
             rs.getInt("idConfigDisciplina"),
-            rs.getInt("idUsuario")
+            rs.getInt("idUsuario"),
+            rs.getInt("idPeriodo")
         );
     }
 }

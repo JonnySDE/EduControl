@@ -4,23 +4,25 @@ import java.time.LocalDate;
 
 public class RegistroAsistencia {
     private int idRegistroAsis;
-    private String estado; // 'Asistencia', 'Falta', 'Permiso'
+    private String estado;
     private LocalDate fecha;
     private int matricula;
     private int idConfigAsistencia;
     private int idUsuario;
+    private int idPeriodo;
 
     public RegistroAsistencia() {
     }
 
     public RegistroAsistencia(int idRegistroAsis, String estado, LocalDate fecha,
-                            int matricula, int idConfigAsistencia, int idUsuario) {
+                               int matricula, int idConfigAsistencia, int idUsuario, int idPeriodo) {
         this.idRegistroAsis = idRegistroAsis;
         this.estado = estado;
         this.fecha = fecha;
         this.matricula = matricula;
         this.idConfigAsistencia = idConfigAsistencia;
         this.idUsuario = idUsuario;
+        this.idPeriodo = idPeriodo;
     }
 
     public int getIdRegistroAsis() {
@@ -69,5 +71,13 @@ public class RegistroAsistencia {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
+
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
     }
 }

@@ -44,35 +44,29 @@ public class CampoFormativoDAO {
     }
 
     public void crear(CampoFormativo campo) throws SQLException {
-        String sql = "INSERT INTO campo_formativo (Nombre, Grado) VALUES (?, ?)";
+        String sql = "INSERT INTO campo_formativo (Nombre, Grado, CicloEscolar) VALUES (?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, campo.getNombre());
-            if (campo.getGrado() != null) {
-                stmt.setInt(2, campo.getGrado());
-            } else {
-                stmt.setNull(2, java.sql.Types.INTEGER);
-            }
+            stmt.setInt(2, campo.getGrado());
+            stmt.setString(3, campo.getCicloEscolar());
 
             stmt.executeUpdate();
         }
     }
 
     public void actualizar(CampoFormativo campo) throws SQLException {
-        String sql = "UPDATE campo_formativo SET Nombre = ?, Grado = ? WHERE idCampoFormativo = ?";
+        String sql = "UPDATE campo_formativo SET Nombre = ?, Grado = ?, CicloEscolar = ? WHERE idCampoFormativo = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, campo.getNombre());
-            if (campo.getGrado() != null) {
-                stmt.setInt(2, campo.getGrado());
-            } else {
-                stmt.setNull(2, java.sql.Types.INTEGER);
-            }
-            stmt.setInt(3, campo.getIdCampoFormativo());
+            stmt.setInt(2, campo.getGrado());
+            stmt.setString(3, campo.getCicloEscolar());
+            stmt.setInt(4, campo.getIdCampoFormativo());
 
             stmt.executeUpdate();
         }
@@ -90,13 +84,11 @@ public class CampoFormativoDAO {
     }
 
     private CampoFormativo mapear(ResultSet rs) throws SQLException {
-        int grado = rs.getInt("Grado");
-        Integer gradoObj = rs.wasNull() ? null : grado;
-
         return new CampoFormativo(
             rs.getInt("idCampoFormativo"),
             rs.getString("Nombre"),
-            gradoObj
+            rs.getInt("Grado"),
+            rs.getString("CicloEscolar")
         );
     }
 }

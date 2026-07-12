@@ -66,5 +66,16 @@ public class PeriodoController {
                 ctx.status(500).result("Error: " + e.getMessage());
             }
         });
+
+        // Cerrar un periodo (bloquea nuevos registros para ese periodo)
+        app.put("/periodos/{id}/cerrar", ctx -> {
+            try {
+                int id = Integer.parseInt(ctx.pathParam("id"));
+                dao.cerrarPeriodo(id);
+                ctx.result("Periodo cerrado correctamente");
+            } catch (SQLException e) {
+                ctx.status(500).result("Error: " + e.getMessage());
+            }
+        });
     }
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,30 +45,44 @@ public class PeriodoDAO {
     }
 
     public void crear(Periodo periodo) throws SQLException {
-        String sql = "INSERT INTO periodo (periodo, idGrupo, idCampoFormativo) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO periodo (estado, periodo, idGrupo, idCampoFormativo) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, periodo.getPeriodo());
-            stmt.setInt(2, periodo.getIdGrupo());
-            stmt.setInt(3, periodo.getIdCampoFormativo());
+            stmt.setString(1, periodo.getEstado() != null ? periodo.getEstado() : "Abierto");
+            stmt.setString(2, periodo.getPeriodo());
+            stmt.setInt(3, periodo.getIdGrupo());
+            stmt.setInt(4, periodo.getIdCampoFormativo());
 
             stmt.executeUpdate();
         }
     }
 
     public void actualizar(Periodo periodo) throws SQLException {
-        String sql = "UPDATE periodo SET periodo = ?, idGrupo = ?, idCampoFormativo = ? WHERE idPeriodo = ?";
+        String sql = "UPDATE periodo SET estado = ?, periodo = ?, idGrupo = ?, idCampoFormativo = ? WHERE idPeriodo = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, periodo.getPeriodo());
-            stmt.setInt(2, periodo.getIdGrupo());
-            stmt.setInt(3, periodo.getIdCampoFormativo());
-            stmt.setInt(4, periodo.getIdPeriodo());
+            stmt.setString(1, periodo.getEstado());
+            stmt.setString(2, periodo.getPeriodo());
+            stmt.setInt(3, periodo.getIdGrupo());
+            stmt.setInt(4, periodo.getIdCampoFormativo());
+            stmt.setInt(5, periodo.getIdPeriodo());
 
+            stmt.executeUpdate();
+        }
+    }
+
+    // Cierra el periodo: cambia estado a 'Cerrado' y registra la fecha/hora de cierre
+    public void cerrarPeriodo(int idPeriodo) throws SQLException {
+        String sql = "UPDATE periodo SET estado = 'Cerrado', fechaCierre = NOW() WHERE idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idPeriodo);
             stmt.executeUpdate();
         }
     }
@@ -84,8 +99,12 @@ public class PeriodoDAO {
     }
 
     private Periodo mapear(ResultSet rs) throws SQLException {
+        Timestamp tsFechaCierre = rs.getTimestamp("fechaCierre");
+
         return new Periodo(
             rs.getInt("idPeriodo"),
+            rs.getString("estado"),
+            tsFechaCierre != null ? tsFechaCierre.toLocalDateTime() : null,
             rs.getString("periodo"),
             rs.getInt("idGrupo"),
             rs.getInt("idCampoFormativo")

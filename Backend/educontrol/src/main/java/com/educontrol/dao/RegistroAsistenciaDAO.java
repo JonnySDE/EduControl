@@ -45,8 +45,8 @@ public class RegistroAsistenciaDAO {
     }
 
     public void crear(RegistroAsistencia registro) throws SQLException {
-        String sql = "INSERT INTO registro_asistencia (estado, fecha, Matricula, idConfigAsistencia, idUsuario) " +
-                     "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro_asistencia (estado, fecha, Matricula, idConfigAsistencia, idUsuario, idPeriodo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -56,6 +56,7 @@ public class RegistroAsistenciaDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdConfigAsistencia());
             stmt.setInt(5, registro.getIdUsuario());
+            stmt.setInt(6, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
@@ -63,7 +64,7 @@ public class RegistroAsistenciaDAO {
 
     public void actualizar(RegistroAsistencia registro) throws SQLException {
         String sql = "UPDATE registro_asistencia SET estado = ?, fecha = ?, Matricula = ?, " +
-                     "idConfigAsistencia = ?, idUsuario = ? WHERE idRegistroAsis = ?";
+                     "idConfigAsistencia = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroAsis = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -73,7 +74,8 @@ public class RegistroAsistenciaDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdConfigAsistencia());
             stmt.setInt(5, registro.getIdUsuario());
-            stmt.setInt(6, registro.getIdRegistroAsis());
+            stmt.setInt(6, registro.getIdPeriodo());
+            stmt.setInt(7, registro.getIdRegistroAsis());
 
             stmt.executeUpdate();
         }
@@ -99,7 +101,8 @@ public class RegistroAsistenciaDAO {
             fechaSql != null ? fechaSql.toLocalDate() : null,
             rs.getInt("Matricula"),
             rs.getInt("idConfigAsistencia"),
-            rs.getInt("idUsuario")
+            rs.getInt("idUsuario"),
+            rs.getInt("idPeriodo")
         );
     }
 }

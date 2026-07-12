@@ -45,8 +45,8 @@ public class RegistroParticipacionDAO {
     }
 
     public void crear(RegistroParticipacion registro) throws SQLException {
-        String sql = "INSERT INTO registro_participacion (Puntuacion, fecha, Matricula, idParticipacion, idUsuario) " +
-                     "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro_participacion (Puntuacion, fecha, Matricula, idParticipacion, idUsuario, idPeriodo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -56,6 +56,7 @@ public class RegistroParticipacionDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdParticipacion());
             stmt.setInt(5, registro.getIdUsuario());
+            stmt.setInt(6, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
@@ -63,7 +64,7 @@ public class RegistroParticipacionDAO {
 
     public void actualizar(RegistroParticipacion registro) throws SQLException {
         String sql = "UPDATE registro_participacion SET Puntuacion = ?, fecha = ?, Matricula = ?, " +
-                     "idParticipacion = ?, idUsuario = ? WHERE idRegistroParticipacion = ?";
+                     "idParticipacion = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroParticipacion = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -73,7 +74,8 @@ public class RegistroParticipacionDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdParticipacion());
             stmt.setInt(5, registro.getIdUsuario());
-            stmt.setInt(6, registro.getIdRegistroParticipacion());
+            stmt.setInt(6, registro.getIdPeriodo());
+            stmt.setInt(7, registro.getIdRegistroParticipacion());
 
             stmt.executeUpdate();
         }
@@ -99,7 +101,8 @@ public class RegistroParticipacionDAO {
             fechaSql != null ? fechaSql.toLocalDate() : null,
             rs.getInt("Matricula"),
             rs.getInt("idParticipacion"),
-            rs.getInt("idUsuario")
+            rs.getInt("idUsuario"),
+            rs.getInt("idPeriodo")
         );
     }
 }

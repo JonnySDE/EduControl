@@ -44,7 +44,7 @@ public class RegistroTareaDAO {
     }
 
     public void crear(RegistroTarea registro) throws SQLException {
-        String sql = "INSERT INTO registro_tarea (Nombre, Observaciones, puntaje, estatus, Matricula, idTarea, idUsuario) " +
+        String sql = "INSERT INTO registro_tarea (Nombre, Observaciones, estatus, Matricula, idTarea, idUsuario, idPeriodo) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
@@ -52,30 +52,30 @@ public class RegistroTareaDAO {
 
             stmt.setString(1, registro.getNombre());
             stmt.setString(2, registro.getObservaciones());
-            stmt.setFloat(3, registro.getPuntaje());
-            stmt.setBoolean(4, registro.isEstatus());
-            stmt.setInt(5, registro.getMatricula());
-            stmt.setInt(6, registro.getIdTarea());
-            stmt.setInt(7, registro.getIdUsuario());
+            stmt.setString(3, registro.getEstatus());
+            stmt.setInt(4, registro.getMatricula());
+            stmt.setInt(5, registro.getIdTarea());
+            stmt.setInt(6, registro.getIdUsuario());
+            stmt.setInt(7, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
     }
 
     public void actualizar(RegistroTarea registro) throws SQLException {
-        String sql = "UPDATE registro_tarea SET Nombre = ?, Observaciones = ?, puntaje = ?, estatus = ?, " +
-                     "Matricula = ?, idTarea = ?, idUsuario = ? WHERE idRegistroTarea = ?";
+        String sql = "UPDATE registro_tarea SET Nombre = ?, Observaciones = ?, estatus = ?, " +
+                     "Matricula = ?, idTarea = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroTarea = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, registro.getNombre());
             stmt.setString(2, registro.getObservaciones());
-            stmt.setFloat(3, registro.getPuntaje());
-            stmt.setBoolean(4, registro.isEstatus());
-            stmt.setInt(5, registro.getMatricula());
-            stmt.setInt(6, registro.getIdTarea());
-            stmt.setInt(7, registro.getIdUsuario());
+            stmt.setString(3, registro.getEstatus());
+            stmt.setInt(4, registro.getMatricula());
+            stmt.setInt(5, registro.getIdTarea());
+            stmt.setInt(6, registro.getIdUsuario());
+            stmt.setInt(7, registro.getIdPeriodo());
             stmt.setInt(8, registro.getIdRegistroTarea());
 
             stmt.executeUpdate();
@@ -98,11 +98,11 @@ public class RegistroTareaDAO {
             rs.getInt("idRegistroTarea"),
             rs.getString("Nombre"),
             rs.getString("Observaciones"),
-            rs.getFloat("puntaje"),
-            rs.getBoolean("estatus"),
+            rs.getString("estatus"),
             rs.getInt("Matricula"),
             rs.getInt("idTarea"),
-            rs.getInt("idUsuario")
+            rs.getInt("idUsuario"),
+            rs.getInt("idPeriodo")
         );
     }
 }

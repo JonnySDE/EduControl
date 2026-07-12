@@ -10,12 +10,13 @@ public class RegistroExamen {
     private int idExamen;
     private int idUsuario;
     private int idCampoFormativo;
+    private int idPeriodo;
 
     public RegistroExamen() {
     }
 
     public RegistroExamen(int idRegistroExamen, LocalDate fecha, String nombreExamen,
-                        int matricula, int idExamen, int idUsuario, int idCampoFormativo) {
+                           int matricula, int idExamen, int idUsuario, int idCampoFormativo, int idPeriodo) {
         this.idRegistroExamen = idRegistroExamen;
         this.fecha = fecha;
         this.nombreExamen = nombreExamen;
@@ -23,6 +24,7 @@ public class RegistroExamen {
         this.idExamen = idExamen;
         this.idUsuario = idUsuario;
         this.idCampoFormativo = idCampoFormativo;
+        this.idPeriodo = idPeriodo;
     }
 
     public int getIdRegistroExamen() {
@@ -79,5 +81,13 @@ public class RegistroExamen {
 
     public void setIdCampoFormativo(int idCampoFormativo) {
         this.idCampoFormativo = idCampoFormativo;
+    }
+
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
+
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
     }
 }

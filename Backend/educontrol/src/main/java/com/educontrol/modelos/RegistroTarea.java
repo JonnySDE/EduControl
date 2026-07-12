@@ -4,25 +4,25 @@ public class RegistroTarea {
     private int idRegistroTarea;
     private String nombre;
     private String observaciones;
-    private float puntaje;
-    private boolean estatus;
+    private String estatus;
     private int matricula;
     private int idTarea;
     private int idUsuario;
+    private int idPeriodo;
 
     public RegistroTarea() {
     }
 
-    public RegistroTarea(int idRegistroTarea, String nombre, String observaciones, float puntaje,
-                        boolean estatus, int matricula, int idTarea, int idUsuario) {
+    public RegistroTarea(int idRegistroTarea, String nombre, String observaciones, String estatus,
+                          int matricula, int idTarea, int idUsuario, int idPeriodo) {
         this.idRegistroTarea = idRegistroTarea;
         this.nombre = nombre;
         this.observaciones = observaciones;
-        this.puntaje = puntaje;
         this.estatus = estatus;
         this.matricula = matricula;
         this.idTarea = idTarea;
         this.idUsuario = idUsuario;
+        this.idPeriodo = idPeriodo;
     }
 
     public int getIdRegistroTarea() {
@@ -49,19 +49,11 @@ public class RegistroTarea {
         this.observaciones = observaciones;
     }
 
-    public float getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(float puntaje) {
-        this.puntaje = puntaje;
-    }
-
-    public boolean isEstatus() {
+    public String getEstatus() {
         return estatus;
     }
 
-    public void setEstatus(boolean estatus) {
+    public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
 
@@ -87,5 +79,13 @@ public class RegistroTarea {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
+
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
     }
 }

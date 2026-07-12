@@ -10,12 +10,13 @@ public class RegistroDisciplina {
     private int matricula;
     private int idConfigDisciplina;
     private int idUsuario;
+    private int idPeriodo;
 
     public RegistroDisciplina() {
     }
 
     public RegistroDisciplina(int idRegistroDisciplina, String observaciones, String comportamiento,
-                            LocalDate fecha, int matricula, int idConfigDisciplina, int idUsuario) {
+                               LocalDate fecha, int matricula, int idConfigDisciplina, int idUsuario, int idPeriodo) {
         this.idRegistroDisciplina = idRegistroDisciplina;
         this.observaciones = observaciones;
         this.comportamiento = comportamiento;
@@ -23,6 +24,7 @@ public class RegistroDisciplina {
         this.matricula = matricula;
         this.idConfigDisciplina = idConfigDisciplina;
         this.idUsuario = idUsuario;
+        this.idPeriodo = idPeriodo;
     }
 
     public int getIdRegistroDisciplina() {
@@ -79,5 +81,13 @@ public class RegistroDisciplina {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
+
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
     }
 }
