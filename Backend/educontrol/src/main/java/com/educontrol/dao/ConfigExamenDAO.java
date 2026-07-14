@@ -43,6 +43,22 @@ public class ConfigExamenDAO {
         return null;
     }
 
+    public ConfigExamen obtenerPorUsuario(int idUsuario) throws SQLException {
+        String sql = "SELECT * FROM config_examen WHERE idUsuario = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapear(rs);
+            }
+        }
+        return null;
+    }
+
     public void crear(ConfigExamen config) throws SQLException {
         String sql = "INSERT INTO config_examen (porcentaje, idUsuario) VALUES (?, ?)";
 

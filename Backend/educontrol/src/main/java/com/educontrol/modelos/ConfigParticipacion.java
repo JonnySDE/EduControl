@@ -4,16 +4,14 @@ public class ConfigParticipacion {
     private int idParticipacion;
     private int porcentaje;
     private int idUsuario;
-    private int idCampoFormativo;
 
     public ConfigParticipacion() {
     }
 
-    public ConfigParticipacion(int idParticipacion, int porcentaje, int idUsuario, int idCampoFormativo) {
+    public ConfigParticipacion(int idParticipacion, int porcentaje, int idUsuario) {
         this.idParticipacion = idParticipacion;
         this.porcentaje = porcentaje;
         this.idUsuario = idUsuario;
-        this.idCampoFormativo = idCampoFormativo;
     }
 
     public int getIdParticipacion() {
@@ -38,13 +36,5 @@ public class ConfigParticipacion {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public int getIdCampoFormativo() {
-        return idCampoFormativo;
-    }
-
-    public void setIdCampoFormativo(int idCampoFormativo) {
-        this.idCampoFormativo = idCampoFormativo;
     }
 }

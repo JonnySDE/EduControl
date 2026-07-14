@@ -44,9 +44,28 @@ public class RegistroParticipacionDAO {
         return null;
     }
 
+    public List<RegistroParticipacion> listarPorAlumnoCampoPeriodo(int matricula, int idCampoFormativo, int idPeriodo) throws SQLException {
+        List<RegistroParticipacion> lista = new ArrayList<>();
+        String sql = "SELECT * FROM registro_participacion WHERE Matricula = ? AND idCampoFormativo = ? AND idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, matricula);
+            stmt.setInt(2, idCampoFormativo);
+            stmt.setInt(3, idPeriodo);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                lista.add(mapear(rs));
+            }
+        }
+        return lista;
+    }
+
     public void crear(RegistroParticipacion registro) throws SQLException {
-        String sql = "INSERT INTO registro_participacion (Puntuacion, fecha, Matricula, idParticipacion, idUsuario, idPeriodo) " +
-                     "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro_participacion (Puntuacion, fecha, Matricula, idParticipacion, idUsuario, idCampoFormativo, idPeriodo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -56,7 +75,8 @@ public class RegistroParticipacionDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdParticipacion());
             stmt.setInt(5, registro.getIdUsuario());
-            stmt.setInt(6, registro.getIdPeriodo());
+            stmt.setInt(6, registro.getIdCampoFormativo());
+            stmt.setInt(7, registro.getIdPeriodo());
 
             stmt.executeUpdate();
         }
@@ -64,7 +84,7 @@ public class RegistroParticipacionDAO {
 
     public void actualizar(RegistroParticipacion registro) throws SQLException {
         String sql = "UPDATE registro_participacion SET Puntuacion = ?, fecha = ?, Matricula = ?, " +
-                     "idParticipacion = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroParticipacion = ?";
+                     "idParticipacion = ?, idUsuario = ?, idCampoFormativo = ?, idPeriodo = ? WHERE idRegistroParticipacion = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -74,8 +94,9 @@ public class RegistroParticipacionDAO {
             stmt.setInt(3, registro.getMatricula());
             stmt.setInt(4, registro.getIdParticipacion());
             stmt.setInt(5, registro.getIdUsuario());
-            stmt.setInt(6, registro.getIdPeriodo());
-            stmt.setInt(7, registro.getIdRegistroParticipacion());
+            stmt.setInt(6, registro.getIdCampoFormativo());
+            stmt.setInt(7, registro.getIdPeriodo());
+            stmt.setInt(8, registro.getIdRegistroParticipacion());
 
             stmt.executeUpdate();
         }
@@ -102,6 +123,7 @@ public class RegistroParticipacionDAO {
             rs.getInt("Matricula"),
             rs.getInt("idParticipacion"),
             rs.getInt("idUsuario"),
+            rs.getInt("idCampoFormativo"),
             rs.getInt("idPeriodo")
         );
     }

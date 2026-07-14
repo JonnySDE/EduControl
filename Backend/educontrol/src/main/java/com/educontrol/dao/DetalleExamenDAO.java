@@ -82,6 +82,22 @@ public class DetalleExamenDAO {
             stmt.executeUpdate();
         }
     }
+    public DetalleExamen obtenerPorRegistroExamen(int idRegistroExamen) throws SQLException {
+        String sql = "SELECT * FROM detalle_examen WHERE idRegistroExamen = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idRegistroExamen);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapear(rs);
+            }
+        }
+        return null;
+    }
+    
 
     private DetalleExamen mapear(ResultSet rs) throws SQLException {
         return new DetalleExamen(

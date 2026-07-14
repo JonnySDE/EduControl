@@ -94,6 +94,25 @@ public class RegistroExamenDAO {
         }
     }
 
+    public List<RegistroExamen> listarPorAlumnoCampoPeriodo(int matricula, int idCampoFormativo, int idPeriodo) throws SQLException {
+        List<RegistroExamen> lista = new ArrayList<>();
+        String sql = "SELECT * FROM registro_examen WHERE Matricula = ? AND idCampoFormativo = ? AND idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, matricula);
+            stmt.setInt(2, idCampoFormativo);
+            stmt.setInt(3, idPeriodo);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                lista.add(mapear(rs));
+            }
+        }
+        return lista;
+    }
+    
     private RegistroExamen mapear(ResultSet rs) throws SQLException {
         Date fechaSql = rs.getDate("fecha");
 

@@ -43,6 +43,24 @@ public class PromedioDAO {
         return null;
     }
 
+    public Promedio obtenerPorMatriculaCampoPeriodo(int matricula, int idCampoFormativo, int idPeriodo) throws SQLException {
+        String sql = "SELECT * FROM promedio WHERE Matricula = ? AND idCampoFormativo = ? AND idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, matricula);
+            stmt.setInt(2, idCampoFormativo);
+            stmt.setInt(3, idPeriodo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapear(rs);
+            }
+        }
+        return null;
+    }
+
     public void crear(Promedio promedio) throws SQLException {
         String sql = "INSERT INTO promedio (Matricula, idCampoFormativo, PromedioFinal, Grado, idPeriodo) " +
                      "VALUES (?, ?, ?, ?, ?)";

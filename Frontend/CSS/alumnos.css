@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Aplicar a todo el sistema */
+/* ==========================================
+   1. ESTILOS GLOBALES Y BASE DE LA APP
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +20,7 @@
         "sidebar main"
         "footer footer";
     min-height: 100vh;
-    background-color: #0F2D52; /* evita la línea blanca al final de la página */
+    background-color: #0F2D52; /* Evita la línea blanca al final de la página */
 }
 
 /* --- Header --- */
@@ -50,7 +52,7 @@
 /* --- Sidebar --- */
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: #f1f3f6; /* Gris de tu menú lateral */
+    background-color: #f1f3f6; /* Gris del menú lateral */
     border-right: 2px solid #e0e0e0;
     padding-top: 30px;
 }
@@ -58,7 +60,7 @@
 .menu-lateral {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+    gap: 30px; /* Separación uniforme entre módulos */
 }
 
 .item-menu {
@@ -67,14 +69,14 @@
     align-items: center;
     gap: 15px;
     width: 100%;
-    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
+    padding: 22px 30px; /* Padding vertical para dar presencia */
     border-radius: 10px;
     text-decoration: none;
     color: #000;
     font-weight: 600;
     font-size: 1.05rem;
     transition: background 0.3s;
-    border: none;             /* que ningún estado agregue borde */
+    border: none;
 }
 
 .item-menu:hover {
@@ -82,9 +84,9 @@
 }
 
 .item-menu.active {
-    background-color: rgba(18, 84, 166, 0.6);
+    background-color: rgba(18, 84, 166, 0.6); /* Azul semitransparente de activo */
     color: #000;
-    font-weight: 600;        /* ojo: bold puede cambiar el ancho del texto, ver nota abajo */
+    font-weight: 600;
 }
 
 .item-menu img {
@@ -92,10 +94,7 @@
     height: auto;
 }
 
-/* --- Contenido principal: contenedor base neutro ---
-   IMPORTANTE: no lleva align-items aquí, para que cada vista
-   decida su propio comportamiento (centrado o alineado a la izquierda)
-   sin romper a las demás. Ver sección 2 para el ajuste de esta vista. */
+/* --- Contenido principal --- */
 .dashboard-main {
     grid-area: main;
     padding: 35px 50px;
@@ -112,12 +111,12 @@
     background-color: #0F2D52;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Mantiene el contenido a la derecha */
-    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
+    justify-content: flex-end; /* Contenido alineado a la derecha */
+    padding: 0 40px;
     color: white;
     font-size: 0.75rem;
     text-align: right;
-    min-height: 85px; /* Asegura un tamaño base */
+    min-height: 85px;
 }
 
 .dashboard-footer img {
@@ -125,8 +124,10 @@
     margin-right: 20px;
 }
 
-/* SECCION PARA LA VISTA DE ALUMNOS*/
 
+/* ==========================================
+   2. SECCIÓN DE ALUMNOS (Estilo Unificado de Tablas)
+   ========================================== */
 .titulo-perfil {
     font-size: 3rem;
     color: #0F2D52;
@@ -134,14 +135,14 @@
     margin-left: 30px;
     align-self: flex-start;
 }
+
 .contenedor-gestion {
-    width: 95%; /* Ocupa casi todo el ancho disponible */
-    max-width: none; /* Quitamos el límite de 1000px */
+    width: 95%;
+    max-width: none;
     margin: 30px 0;
-    font-family: 'Poppins', sans-serif;
 }
 
-/* --- Controles Superiores (Alineación exacta) --- */
+/* --- Controles Superiores --- */
 .controles-superiores {
     display: flex;
     justify-content: space-between;
@@ -160,100 +161,127 @@
 
 .buscar-grupo input {
     font-size: 1.5rem;
-    padding: 15px 80px; /* Más grandes */
+    padding: 15px 20px;
     border: 1px solid #777;
     border-radius: 8px;
-    width: 350px; /* Más ancho */
+    width: 350px;
 }
 
 .btn-agregar {
     background-color: #3BC66E;
     color: black;
     font-size: 1.6rem;
-    padding: 10px 80px;
+    padding: 10px 40px;
     border: none;
     border-radius: 20px;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
 }
 
-/* --- Tabla (Igual a Figma) --- */
+/* --- Tabla Adaptada Exactamente a tu Captura --- */
+.tabla-contenedor {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    margin-top: 40px;
+    margin-left: 30px;
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #b3cadd; /* Borde exterior azul claro de la tabla */
+    border-radius: 12px;       /* Esquinas redondeadas del contenedor */
+}
+
 .tabla-alumnos {
     width: 100%;
     border-collapse: collapse;
     background: #ffffff;
-    border: 1px solid #000;
-    margin-left: 30px;
-    margin-top: 70px;
 }
 
+/* Encabezado con tu Azul Acero / Grisáceo */
 .tabla-alumnos th {
-    background-color: #8daed5;
-    color: #000;
-    padding: 20px; /* Aumentado para mayor altura */
-    border: 1px solid #000;
-    font-weight: 600;
-    font-weight: bold;
+    background-color: #7FA9D1; /* Color exacto azul grisáceo claro */
+    color: #0F2D52;            /* Texto azul marino oscuro */
+    padding: 18px 20px;        
+    font-weight: 700;          /* Texto en negrita grueso */
     text-align: center;
-    font-size: 1.6rem; /* Un poco más grande el texto */
+    font-size: 1.1rem;         
+    border: 1px solid #b3cadd; /* Líneas divisorias internas azul claro */
 }
 
+/* Celdas de Alumnos */
 .tabla-alumnos td {
-    padding: 10px; /* Aumentado para que la tabla sea más alta y legible */
-    border: 1px solid #000;
+    padding: 16px 20px;
+    border: 1px solid #e2e8f0; /* Líneas divisorias grises sutiles */
     text-align: center;
-    font-size: 1.5rem;
-    
+    font-size: 1.05rem;        
+    font-weight: 500;          /* Grosor medio para los nombres */
+    color: #1a1a1a;
 }
 
-/* 4. Iconos: Escalamos un poco los iconos para que no se vean pequeños */
+.tabla-alumnos tbody tr:hover {
+    background-color: #f8fafc; 
+}
+
+/* --- Contenedor e Iconos de Acciones --- */
 .acciones-celda {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Más separación entre iconos */
+    gap: 12px; 
+}
+
+.acciones-celda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.acciones-celda button:hover {
+    transform: scale(1.1);
 }
 
 .acciones-celda img {
-    width: 60px; /* Iconos más grandes */
-    height: 60px;
-    cursor: pointer;
+    width: 22px;  
+    height: 22px;
 }
 
-.tabla-contenedor {
-    max-height: 400px;
-    overflow-y: auto;   /* Barra vertical activada */
-    overflow-x: hidden; /* Esto ELIMINA la barra horizontal */
-    width: 100%;
-    margin-top: 20px;
-    box-sizing: border-box; /* Crucial: incluye el padding y borde en el ancho total */
-    position: relative;
-}
 
-/* FORMULARIO AGREGAR ALUMNO */
+/* ==========================================
+   3. VISTAS ADICIONALES (FORMULARIOS, MODAL Y TOASTS)
+   ========================================== */
+
+/* --- Formulario Registrar Alumno --- */
 .formulario-alumno {
     display: flex;
     flex-direction: column;
-    max-width: 1300px; /* Aumentamos de 500px a 800px para que sea más ancho */
-    width: 90%;      /* Ocupa el 90% del espacio disponible */
+    max-width: 1300px;
+    width: 90%;
     margin-top: -10px;
     margin-left: 30px;
-    padding: 40px;   /* Más espacio interno */
+    padding: 40px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
 }
+
 .formulario-alumno input {
-    margin-bottom: 25px; /* Más espacio entre campos */
-    padding: 10px;       /* Campos más altos/cómodos */
-    font-size: 1.4rem;   /* Texto más grande */
+    margin-bottom: 25px;
+    padding: 10px;
+    font-size: 1.4rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%;         /* Asegura que ocupen todo el ancho del formulario */
-    box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .acciones-form { 
     display: flex; 
     justify-content: space-between; 
@@ -270,7 +298,9 @@
     gap: 50px;
     border-radius: 5px; 
     font-size: 1.60rem;
+    color: black;
 }
+
 .btn-cancelar { 
     display: flex;
     align-items: center;
@@ -281,11 +311,10 @@
     gap: 50px;
     border-radius: 5px; 
     font-size: 1.60rem;
+    color: white;
 }
 
-/* MENSAJES DE ALERTA */
-/* Contenedor de notificaciones */
-/* Contenedor que inyectaremos en el body */
+/* --- Mensajes de Alerta (Toasts) --- */
 #toast-container {
     position: fixed;
     top: 100px;
@@ -296,7 +325,6 @@
     gap: 12px;
 }
 
-/* Estilo base del toast */
 .mensaje-toast {
     display: flex;
     align-items: center;
@@ -313,24 +341,21 @@
     animation: entrada-toast 0.3s ease forwards;
 }
 
-/* Bordes laterales para el tipo de mensaje */
 .toast-advertencia { border-left: 6px solid #F4C91A; }
 .toast-exito { border-left: 6px solid #1E6B30; }
 
-/* Ajuste del icono dentro del toast */
 .mensaje-toast img {
     width: 32px; 
     height: 32px;
     flex-shrink: 0;
 }
 
-/* Animaciones */
 @keyframes entrada-toast {
     from { opacity: 0; transform: translateX(30px); }
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* MODAL PARA ELIMINAR ALUMNO*/
+/* --- Modal Eliminar Alumno --- */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -344,7 +369,7 @@
 
 .modal-contenido {
     background: #ffffff;
-    padding: 60px 100PX;
+    padding: 60px 100px;
     border-radius: 22px;
     text-align: center;
     width: 90%;
@@ -369,7 +394,25 @@
     justify-content: center;
 }
 
-.acciones-modal button {
+.acciones-modal .btn-modal-cancelar {
+    background-color: #FF3B3B;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 28px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.acciones-modal .btn-modal-confirmar {
+    background-color: #6098F7;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -398,15 +441,7 @@
     transform: scale(0.97);
 }
 
-.btn-cancelar {
-    background-color: #FF3B3B;
-}
-
-.btn-confirmar {
-    background-color: #6098F7;
-}
-
-/* VER INFORMNACION DEL ALUMNO*/
+/* --- Ver Información del Alumno --- */
 .contenedor-informacion {
     display: flex;
     flex-direction: column;
@@ -414,39 +449,37 @@
     background: #ffffff;
     padding: 40px;
     border-radius: 20px;
-    width: 95%;          /* Ocupa casi todo el ancho de la pantalla */
-    margin: 0;   /* Centrado */
+    width: 95%;          
+    margin: 0;   
 }
 
-/* Etiquetas más grandes y destacadas */
 label {
-    font-size: 1.5rem;      /* Texto más grande */
+    font-size: 1.5rem;      
     font-weight: 700;
     color: #1a2a3a;
     margin-bottom: 10px;
     display: block;
 }
 
-/* Cajas de datos muy grandes y cómodas */
 .campo-dato {
     background-color: #f4f7f9;
     border: 2px solid #e2e8f0;
     border-radius: 15px;
-    padding: 20px;          /* Más altura para que el dato se vea alargado */
-    font-size: 1.4rem;      /* Dato grande */
+    padding: 20px;          
+    font-size: 1.4rem;      
     color: #2d3748;
-    width: 100%;            /* Ocupa todo el ancho disponible */
+    width: 100%;            
     box-sizing: border-box;
 }
 
-/* PARA EDITAR ALUMNO */
+/* --- Editar Alumno --- */
 .contenedor-botones {
     display: flex;
     gap: 15px;
     margin-top: 20px;
 }
 
-.btn-guardar {
+.btn-guardar-edicion {
     background-color: #2c3e50;
     color: white;
     padding: 15px 30px;
@@ -456,7 +489,7 @@ label {
     font-size: 1rem;
 }
 
-.btn-cancelarEdicion {
+.btn-cancelar-edicion {
     background-color: #e2e8f0;
     color: #4a5568;
     padding: 15px 30px;

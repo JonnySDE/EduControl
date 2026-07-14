@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class RegistroDisciplina {
     private int idRegistroDisciplina;
     private String observaciones;
-    private String comportamiento;
+    private int puntosMenos;
     private LocalDate fecha;
     private int matricula;
     private int idConfigDisciplina;
@@ -15,11 +15,11 @@ public class RegistroDisciplina {
     public RegistroDisciplina() {
     }
 
-    public RegistroDisciplina(int idRegistroDisciplina, String observaciones, String comportamiento,
+    public RegistroDisciplina(int idRegistroDisciplina, String observaciones, int puntosMenos,
                                LocalDate fecha, int matricula, int idConfigDisciplina, int idUsuario, int idPeriodo) {
         this.idRegistroDisciplina = idRegistroDisciplina;
         this.observaciones = observaciones;
-        this.comportamiento = comportamiento;
+        this.puntosMenos = puntosMenos;
         this.fecha = fecha;
         this.matricula = matricula;
         this.idConfigDisciplina = idConfigDisciplina;
@@ -43,12 +43,12 @@ public class RegistroDisciplina {
         this.observaciones = observaciones;
     }
 
-    public String getComportamiento() {
-        return comportamiento;
+    public int getPuntosMenos() {
+        return puntosMenos;
     }
 
-    public void setComportamiento(String comportamiento) {
-        this.comportamiento = comportamiento;
+    public void setPuntosMenos(int puntosMenos) {
+        this.puntosMenos = puntosMenos;
     }
 
     public LocalDate getFecha() {

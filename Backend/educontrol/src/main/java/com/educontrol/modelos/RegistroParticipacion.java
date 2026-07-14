@@ -9,19 +9,21 @@ public class RegistroParticipacion {
     private int matricula;
     private int idParticipacion;
     private int idUsuario;
+    private int idCampoFormativo;
     private int idPeriodo;
 
     public RegistroParticipacion() {
     }
 
     public RegistroParticipacion(int idRegistroParticipacion, float puntuacion, LocalDate fecha,
-                                  int matricula, int idParticipacion, int idUsuario, int idPeriodo) {
+                                  int matricula, int idParticipacion, int idUsuario, int idCampoFormativo, int idPeriodo) {
         this.idRegistroParticipacion = idRegistroParticipacion;
         this.puntuacion = puntuacion;
         this.fecha = fecha;
         this.matricula = matricula;
         this.idParticipacion = idParticipacion;
         this.idUsuario = idUsuario;
+        this.idCampoFormativo = idCampoFormativo;
         this.idPeriodo = idPeriodo;
     }
 
@@ -71,6 +73,14 @@ public class RegistroParticipacion {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdCampoFormativo() {
+        return idCampoFormativo;
+    }
+
+    public void setIdCampoFormativo(int idCampoFormativo) {
+        this.idCampoFormativo = idCampoFormativo;
     }
 
     public int getIdPeriodo() {

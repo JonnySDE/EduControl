@@ -44,15 +44,33 @@ public class RegistroDisciplinaDAO {
         return null;
     }
 
+    // Necesario para el calculo del promedio: suma todos los puntos menos de un alumno en un periodo
+    public int sumarPuntosMenosPorAlumnoPeriodo(int matricula, int idPeriodo) throws SQLException {
+        String sql = "SELECT COALESCE(SUM(PuntosMenos), 0) as total FROM registro_disciplina WHERE Matricula = ? AND idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, matricula);
+            stmt.setInt(2, idPeriodo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        }
+        return 0;
+    }
+
     public void crear(RegistroDisciplina registro) throws SQLException {
-        String sql = "INSERT INTO registro_disciplina (Observaciones, Comportamiento, fecha, Matricula, idConfigDisciplina, idUsuario, idPeriodo) " +
+        String sql = "INSERT INTO registro_disciplina (Observaciones, PuntosMenos, fecha, Matricula, idConfigDisciplina, idUsuario, idPeriodo) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, registro.getObservaciones());
-            stmt.setString(2, registro.getComportamiento());
+            stmt.setInt(2, registro.getPuntosMenos());
             stmt.setDate(3, Date.valueOf(registro.getFecha()));
             stmt.setInt(4, registro.getMatricula());
             stmt.setInt(5, registro.getIdConfigDisciplina());
@@ -64,14 +82,14 @@ public class RegistroDisciplinaDAO {
     }
 
     public void actualizar(RegistroDisciplina registro) throws SQLException {
-        String sql = "UPDATE registro_disciplina SET Observaciones = ?, Comportamiento = ?, fecha = ?, " +
+        String sql = "UPDATE registro_disciplina SET Observaciones = ?, PuntosMenos = ?, fecha = ?, " +
                      "Matricula = ?, idConfigDisciplina = ?, idUsuario = ?, idPeriodo = ? WHERE idRegistroDisciplina = ?";
 
         try (Connection conn = Main.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, registro.getObservaciones());
-            stmt.setString(2, registro.getComportamiento());
+            stmt.setInt(2, registro.getPuntosMenos());
             stmt.setDate(3, Date.valueOf(registro.getFecha()));
             stmt.setInt(4, registro.getMatricula());
             stmt.setInt(5, registro.getIdConfigDisciplina());
@@ -100,7 +118,7 @@ public class RegistroDisciplinaDAO {
         return new RegistroDisciplina(
             rs.getInt("idRegistroDisciplina"),
             rs.getString("Observaciones"),
-            rs.getString("Comportamiento"),
+            rs.getInt("PuntosMenos"),
             fechaSql != null ? fechaSql.toLocalDate() : null,
             rs.getInt("Matricula"),
             rs.getInt("idConfigDisciplina"),

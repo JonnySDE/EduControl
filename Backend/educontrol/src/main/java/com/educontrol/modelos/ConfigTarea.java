@@ -4,16 +4,14 @@ public class ConfigTarea {
     private int idTarea;
     private int porcentaje;
     private int idUsuario;
-    private int idCampoFormativo;
 
     public ConfigTarea() {
     }
 
-    public ConfigTarea(int idTarea, int porcentaje, int idUsuario, int idCampoFormativo) {
+    public ConfigTarea(int idTarea, int porcentaje, int idUsuario) {
         this.idTarea = idTarea;
         this.porcentaje = porcentaje;
         this.idUsuario = idUsuario;
-        this.idCampoFormativo = idCampoFormativo;
     }
 
     public int getIdTarea() {
@@ -38,13 +36,5 @@ public class ConfigTarea {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public int getIdCampoFormativo() {
-        return idCampoFormativo;
-    }
-
-    public void setIdCampoFormativo(int idCampoFormativo) {
-        this.idCampoFormativo = idCampoFormativo;
     }
 }

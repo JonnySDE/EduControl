@@ -14,6 +14,7 @@ import com.educontrol.controllers.ConfigTareaController;
 import com.educontrol.controllers.ConfigExamenController;
 import com.educontrol.controllers.ConfigParticipacionController;
 import com.educontrol.controllers.ConfigAsistenciaController;
+import com.educontrol.controllers.ConfigCriteriosController;
 import com.educontrol.controllers.ConfigDisciplinaController;
 import com.educontrol.controllers.RegistroTareaController;
 import com.educontrol.controllers.RegistroAsistenciaController;
@@ -96,6 +97,7 @@ public class Main {
         PromedioController.registrarRutas(app);
         AlumnoGrupoController.registrarRutas(app);
         LoginController.registrarRutas(app);
+        ConfigCriteriosController.registrarRutas(app);
 
         // Endpoint de prueba: verifica que la conexión a la BD funcione
         app.get("/", ctx -> ctx.result("EduControl backend corriendo... "));

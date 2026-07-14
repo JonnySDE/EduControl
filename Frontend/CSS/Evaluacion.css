@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Aplicar a todo el sistema */
+/* ==========================================
+   1. ESTILOS GLOBALES Y BASE DE LA APP
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +20,7 @@
         "sidebar main"
         "footer footer";
     min-height: 100vh;
-    background-color: #0F2D52; /* evita la línea blanca al final de la página */
+    background-color: #0F2D52; /* Evita la línea blanca al final de la página */
 }
 
 /* --- Header --- */
@@ -58,7 +60,7 @@
 .menu-lateral {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+    gap: 30px; /* Separación uniforme entre módulos */
 }
 
 .item-menu {
@@ -67,14 +69,14 @@
     align-items: center;
     gap: 15px;
     width: 100%;
-    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
+    padding: 22px 30px; /* Padding vertical para dar presencia */
     border-radius: 10px;
     text-decoration: none;
     color: #000;
     font-weight: 600;
     font-size: 1.05rem;
     transition: background 0.3s;
-    border: none;             /* que ningún estado agregue borde */
+    border: none;
 }
 
 .item-menu:hover {
@@ -82,9 +84,9 @@
 }
 
 .item-menu.active {
-    background-color: rgba(18, 84, 166, 0.6);
+    background-color: rgba(18, 84, 166, 0.6); /* Azul semitransparente de activo */
     color: #000;
-    font-weight: 600;        /* ojo: bold puede cambiar el ancho del texto, ver nota abajo */
+    font-weight: 600;
 }
 
 .item-menu img {
@@ -92,6 +94,7 @@
     height: auto;
 }
 
+/* --- Contenido principal --- */
 .dashboard-main {
     grid-area: main;
     padding: 35px 50px;
@@ -108,8 +111,8 @@
     background-color: #0F2D52;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Mantiene el contenido a la derecha */
-    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
+    justify-content: flex-end; /* Contenido alineado a la derecha */
+    padding: 0 40px;
     color: white;
     font-size: 0.75rem;
     text-align: right;
@@ -122,129 +125,144 @@
 }
 
 
-/* Estilos del Módulo de Evaluación */
-/* --- Estilos Generales del Contenedor --- */
-/* Layout del Header */
+/* ==========================================
+   2. ESTILOS DEL MÓDULO DE EVALUACIÓN
+   ========================================== */
+
+/* Layout del Header interno */
 .header-evaluacion {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 0 10px;
+    width: 100%;
 }
 
-#select-campo {
-    appearance: none; /* Elimina la flecha nativa */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    font-size: 1,5rem;
-    padding: 10px 40px 10px 15px; 
-    border: 1px solid #707070;
-    border-radius: 20px; 
-    background-color: white;
-    background-image: url('../Img/IconosEvaluacion/seleccionar.svg');
-    background-repeat: no-repeat;
-    background-position: right 15px center; /* Lo posiciona a la derecha */
-    background-size: 14px; /* Ajusta el tamaño de tu icono */
-    
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-}
 .titulo-perfil {
     font-size: 3rem;
     color: #0F2D52;
     align-self: flex-start;
 }
 
-.filtros-evaluacion {
-    display: flex;
-    align-items: center; /* ESTO ALINEA TODO VERTICALMENTE */
-    gap: 80px;           /* Espacio entre el texto y el selector */
-    margin-bottom: 20px;
-    margin-left: 300px;
-    font-size: 1.5rem;
-}
-
-/* Tabla expandida */
+/* Contenedor de la Tabla con Bordes Redondeados */
 .tabla-contenedor-full {
-    width: 80%; /* Reduce el ancho para que no esté tan estirada */
-    margin: 0 auto; /* Centra la tabla en la pantalla */
-    border: 2px solid #000; /* Borde negro exterior */
-    border-radius: 0; /* Si quieres el estilo rígido de Figma */
-    overflow: hidden;
+    width: 85%;              /* Se ajusta de forma armónica al espacio central */
+    max-width: 900px;
+    margin: 20px 0 40px 10px; /* Centrado y alineado con el título */
+    border: 1px solid #b3cadd; /* Borde exterior azul claro sutil */
+    border-radius: 12px;       /* Esquinas redondeadas unificadas */
+    overflow: hidden;          /* Recorta las celdas para respetar la curvatura */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
 .tabla-evaluacion {
     width: 100%;
     border-collapse: collapse;
+    background-color: #ffffff;
 }
 
-.tabla-evaluacion th, .tabla-evaluacion td {
-    border: 1px solid #000; /* Líneas divisorias negras */
-    padding: 12px;
-    text-align: center;
-}
-
+/* Encabezado Azul Grisáceo / Acero Claro */
 .tabla-evaluacion th {
-    background-color: #8daed5;
-    width: 50%;
+    background-color: #7FA9D1; /* Color exacto azul de la captura */
+    color: #0F2D52;            /* Letras azul marino oscuro */
     padding: 18px;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    font-weight: 700;          /* Texto en negrita bien definido */
     text-align: center;
-    border: 1px solid #000; /* Asegura el borde negro */
+    border: 1px solid #b3cadd; /* Divisiones internas azul claro */
+    width: 50%;
 }
 
+/* Celdas de la Tabla */
 .tabla-evaluacion td {
     padding: 16px;
-    border: 1px solid #000;
+    border: 1px solid #e2e8f0; /* Divisiones internas gris suave */
     text-align: center;
-    width: 50%; /* Asegura que la celda de datos también respete el ancho */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    width: 50%;
 }
 
-.evaluacion-cuerpo{
-    font-size: 1.5rem;
+/* Fila especial (Fila de Total) */
+.tabla-evaluacion .fila-total td {
+    font-weight: 700;
+    background-color: #f8fafc;
+    color: #0F2D52;
 }
 
-/* Botones de acción */
-.acciones-evaluacion {
-    display: flex;
-    justify-content: center; /* Centra los botones */
-    gap: 200px; /* Aumenta la separación entre botones */
-    margin-top: 40px;
-    margin-left: 450px;
+.tabla-evaluacion tbody tr:hover {
+    background-color: #f8fafc; /* Efecto sutil al pasar el cursor */
 }
 
+/* Control de inputs numéricos */
 input[type="number"] {
     width: 80px;
     text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Estilo común para ambos botones */
+/* --- Botones de Acción --- */
+.acciones-evaluacion {
+    display: flex;
+    justify-content: flex-start; /* Se alinea fluidamente con la tabla */
+    gap: 40px;                   /* Separación limpia entre botones */
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 85%;
+    max-width: 900px;
+}
+
+/* Estilo común de botones */
 .btn-limpiar, .btn-guardar {
     display: flex;
-    align-items: center;    /* Alineación vertical perfecta */
+    align-items: center;    
     justify-content: center;
-    gap: 20px;              /* Espacio entre el texto y el icono */
-    padding: 12px 50px;
-    border: 1px solid #000;
-    border-radius: 8px;
+    gap: 15px;              /* Espacio entre texto e icono */
+    padding: 12px 40px;
+    border: none;           /* Eliminado el borde negro grueso */
+    border-radius: 20px;    /* Bordes redondeados estéticos */
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: background 0.2s;
-}
-/* Control estricto del tamaño de los iconos */
-.btn-limpiar img, .btn-guardar img {
-    width: 40px;            /* Tamaño fijo para que no crezcan de más */
-    height: 40px;
-    vertical-align: middle; /* Ayuda extra al centrado */
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Colores */
-.btn-limpiar { background-color: #E6CB37; }
-.btn-guardar { background-color: #22C55E; color: black; }
+.btn-limpiar:hover, .btn-guardar:hover {
+    transform: scale(1.02);
+    filter: brightness(0.95);
+}
+
+/* Control estricto de iconos en los botones */
+.btn-limpiar img, .btn-guardar img {
+    width: 28px;            /* Tamaño óptimo y balanceado */
+    height: 28px;
+    vertical-align: middle; 
+}
+
+/* Colores de los Botones */
+.btn-limpiar { 
+    background-color: #E6CB37; 
+    color: #000;
+}
+
+.btn-guardar { 
+    background-color: #3BC66E; /* Verde unificado con el de agregar alumno */
+    color: #000; 
+}
+
+/* Contenedor de Toasts (Notificaciones) */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

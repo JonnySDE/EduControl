@@ -98,6 +98,11 @@ public class PeriodoDAO {
         }
     }
 
+    public boolean estaAbierto(int idPeriodo) throws SQLException {
+        Periodo periodo = obtenerPorId(idPeriodo);
+        return periodo != null && "Abierto".equals(periodo.getEstado());
+    }
+
     private Periodo mapear(ResultSet rs) throws SQLException {
         Timestamp tsFechaCierre = rs.getTimestamp("fechaCierre");
 

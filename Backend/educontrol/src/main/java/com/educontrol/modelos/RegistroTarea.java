@@ -8,13 +8,14 @@ public class RegistroTarea {
     private int matricula;
     private int idTarea;
     private int idUsuario;
+    private int idCampoFormativo;
     private int idPeriodo;
 
     public RegistroTarea() {
     }
 
     public RegistroTarea(int idRegistroTarea, String nombre, String observaciones, String estatus,
-                          int matricula, int idTarea, int idUsuario, int idPeriodo) {
+                          int matricula, int idTarea, int idUsuario, int idCampoFormativo, int idPeriodo) {
         this.idRegistroTarea = idRegistroTarea;
         this.nombre = nombre;
         this.observaciones = observaciones;
@@ -22,6 +23,7 @@ public class RegistroTarea {
         this.matricula = matricula;
         this.idTarea = idTarea;
         this.idUsuario = idUsuario;
+        this.idCampoFormativo = idCampoFormativo;
         this.idPeriodo = idPeriodo;
     }
 
@@ -79,6 +81,14 @@ public class RegistroTarea {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdCampoFormativo() {
+        return idCampoFormativo;
+    }
+
+    public void setIdCampoFormativo(int idCampoFormativo) {
+        this.idCampoFormativo = idCampoFormativo;
     }
 
     public int getIdPeriodo() {
