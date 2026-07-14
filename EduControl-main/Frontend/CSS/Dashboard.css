@@ -1,0 +1,226 @@
+
+/* Importar Poppins desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Aplicar a todo el sistema */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Aquí garantizamos que todo el sitio use Poppins */
+}
+/* =========================================
+   ESTRUCTURA GRID DEL DASHBOARD
+   ========================================= */
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52; 
+}
+
+/* =========================================
+   1. CABECERA (Header)
+   ========================================= */
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px; /* Aumentamos un poco el logo principal */
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Alineación vertical centrada */
+}
+
+.logos-institucionales img {
+    height: 75px; /* Aumentamos de 50px a 60px para mayor presencia */
+    width: auto;  /* Mantiene la proporción original */
+}
+
+/* =========================================
+   2. MENÚ LATERAL (Sidebar)
+   ========================================= */
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #f1f3f6; /* Gris de tu menú lateral */
+    border-right: 2px solid #e0e0e0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+}
+
+.item-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
+    text-decoration: none;
+    color: #0F2D52;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+/* =========================================
+   3. CONTENIDO PRINCIPAL (Main)
+   ========================================= */
+.dashboard-main {
+    grid-area: main;
+    padding: 35px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+
+    overflow-y: auto;
+}
+
+/* Título de bienvenida */
+.encabezado-bienvenida {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.encabezado-bienvenida h1 {
+    font-size: 2.6rem;       /* antes: 2.2rem */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.texto-azul {
+    color: #153258;
+}
+
+.adorno-birrete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.linea-adorno {
+    width: 140px;              /* antes: 100px */
+    border: none;
+    border-top: 2px solid #ccc;
+}
+
+.adorno-birrete img {
+    width: 75px;              /* antes: 60px */
+}
+
+/* Tarjeta de Información */
+.tarjeta-info-director {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 50px 40px;      /* antes: 30px */
+    width: 100%;
+    max-width: 1150px;       /* antes: 900px */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 50px;
+}
+
+.columna-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.columna-info h3 {
+    font-size: 1.3rem;       /* antes: 1rem */
+    color: #333;
+    margin-bottom: 20px;     /* antes: 15px */
+    min-height: 40px;
+}
+
+.dato-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+}
+
+.dato-info img {
+    width: 60px;              /* antes: 45px */
+}
+
+.dato-info p {
+    font-size: 1.2rem;       /* antes: 0.95rem */
+    color: #555;
+    line-height: 1.5;
+}
+.separador-vertical {
+    width: 4px;
+    background-color: #e0e0e0;
+    margin: 0 20px;
+}
+
+/* Mensaje inferior de advertencia */
+.alerta-modulo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #555;
+    font-weight: 500;
+}
+
+.alerta-modulo img {
+    width: 30px;
+}
+
+/* =========================================
+   4. PIE DE PÁGINA (Footer)
+   ========================================= */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Mantiene el contenido a la derecha */
+    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 60px; /* Asegura un tamaño base */
+}
+
+.dashboard-footer img {
+    height: 60px; 
+    margin-right: 20px; /* Espacio entre el logo y el texto */
+}
+
+
+

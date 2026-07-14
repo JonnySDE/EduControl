@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduControl - Resumen de Grupo</title>
+    <link class="styles-link" rel="stylesheet" href="../../CSS/Contenido.css">
+    <link rel="stylesheet" href="../../CSS/FormulariosRegistro.css">
+    <link rel="stylesheet" href="../../CSS/grupo.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <nav class="menu-lateral">
+                <a href="../Bienvenida.html" class="item-menu"><img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta</a>
+                <a href="#" class="item-menu"><img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno</a>
+                <a href="#" class="item-menu"><img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación</a>
+                <a href="principal.html" class="item-menu"><img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro</a>
+                <a href="menucali.html" class="item-menu"><img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación</a>
+                <a href="#" class="item-menu item-activo"><img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo</a>
+                <a href="#" class="item-menu"><img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes</a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="contenedor-tarjeta-blanca" style="max-width: 700px; margin: 0 auto; padding: 30px; position: relative;">
+                
+                <button type="button" onclick="window.location.href='listagrupos.html'" class="btn-cerrar-x">X</button>
+                
+                <div id="verTituloGrupo" class="titulo-modal-ver">3 "A"</div>
+                
+                <div class="grid-estadisticas">
+                    <div>
+                        <div class="tarjeta-metrica" style="text-align: center; height: 140px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="titulo-metrica" style="margin-bottom: 5px;">Promedio grupal</div>
+                            <div class="contenedor-grafico-circular">
+                                <div id="graficoCirculo" class="circulo-progreso">
+                                    <span id="verPromedio" class="valor-promedio">8.3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="docente-cargo-texto">
+                            Docente a cargo:<br>
+                            <span id="verDocente" style="font-weight: bold; color: #555;">Prof. Docente 1</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        
+                        <div class="tarjeta-metrica">
+                            <div class="titulo-metrica">Resumen del grupo</div>
+                            <div class="fila-metrica">
+                                <span>Total de alumnos</span>
+                                <img src="../../Img/IconosDashboard/Alumno.svg" class="icono-metrica" alt="Alumnos">
+                            </div>
+                            <div class="fila-metrica">
+                                <span>Aprobados</span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span id="verAprobados" style="font-weight: bold;">23</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta-metrica">
+                            <div class="titulo-metrica">Resumen del grupo</div>
+                            <div class="fila-metrica">
+                                <span>Reprobados</span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span id="verReprobados" style="font-weight: bold;">7</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="3">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="fila-metrica">
+                                <span>% de aprobación</span>
+                                <div style="display: flex; align-items: center; gap: 3px;">
+                                    <span id="verPorcentaje" style="font-weight: bold;">76.7</span>
+                                    <span>%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="UP Chiapas">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+
+    <script src="../../JS/script.js"></script>
+</body>
+</html>

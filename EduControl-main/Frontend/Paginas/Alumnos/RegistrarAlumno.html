@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EduControl - Registrar Alumno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/alumnos.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <aside class="dashboard-sidebar">
+        <nav class="menu-lateral">
+            <a href="../Cuenta/Cuenta.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
+            </a>
+            <a href="../Alumnos/Alumnos.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo
+            </a>
+            <a href="#" class="item-menu">
+                <img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes
+            </a>
+        </nav>
+    </aside>
+<body class="dashboard-body">
+    <main class="dashboard-main">
+        <h2 class="titulo-perfil">Registrar Alumno</h2>
+        <form id="formRegistrarAlumno" class="formulario-alumno">
+            <label>Matrícula:</label>
+            <input type="number" id="matricula">
+            
+            <label>Nombre(s):</label>
+            <input type="text" id="nombre">
+            
+            <label>Apellido Paterno:</label>
+            <input type="text" id="apellidoPaterno">
+            
+            <label>Apellido Materno:</label>
+            <input type="text" id="apellidoMaterno">
+            
+            <label>ID Grupo:</label>
+            <input type="number" id="idGrupo">
+            
+            <label>No. Lista:</label>
+            <input type="number" id="numeroLista">
+
+            <div class="acciones-form">
+                <button type="button" class="btn-cancelar" onclick="history.back()">Cancelar
+                    <img src="../../Img/IconosCuenta/cancelar.svg" alt="Cancelar">
+                </button>
+                <button type="submit" class="btn-guardar">Guardar
+                    <img src="../../Img/IconosCuenta/guardar.svg" alt="Guardar">
+                </button>
+            </div>
+        </form>
+    </main>
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="Logo Universidad">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+    <script src="../../JS/alumnos.js"></script>
+</body>
+</html>

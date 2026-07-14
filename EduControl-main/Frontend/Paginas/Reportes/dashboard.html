@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduControl - Dashboard Principal</title>
+    <link class="styles-link" rel="stylesheet" href="../../CSS/Contenido.css">
+    <link class="recurso-estilo" rel="stylesheet" href="../../CSS/reportes.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <nav class="menu-lateral">
+                <a href="../Bienvenida.html" class="item-menu"><img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta</a>
+                <a href="#" class="item-menu"><img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno</a>
+                <a href="#" class="item-menu"><img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación</a>
+                <a href="../Registro/principal.html" class="item-menu"><img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro</a>
+                <a href="../Calificaciones/menucali.html" class="item-menu"><img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación</a>
+                <a href="../Grupos/listagrupos.html" class="item-menu"><img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo</a>
+                <a href="menurepo.html" class="item-menu item-activo"><img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes</a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="contenedor-tarjeta-blanca">
+                
+                <h1 class="titulo-formulario" style="font-size: 2rem; font-weight: bold; color: #000000; margin-bottom: 25px; margin-top: 0;">
+                    Dashboard principal
+                </h1>
+
+                <div class="grid-tres-columnas">
+                    
+                    <div class="tarjeta-dash-conteo">
+                        <div class="icono-dash-kpi">
+                            <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumnos">
+                        </div>
+                        <h2>Alumnos</h2>
+                        <div class="numero-dash-kpi" id="numAlumnos">300</div>
+                    </div>
+
+                    <div class="tarjeta-dash-conteo">
+                        <div class="icono-dash-kpi">
+                            <img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupos">
+                        </div>
+                        <h2>Grupos</h2>
+                        <div class="numero-dash-kpi" id="numGrupos">10</div>
+                    </div>
+
+                    <div class="tarjeta-dash-conteo">
+                        <div class="icono-dash-kpi">
+                            <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Aprovechamiento">
+                        </div>
+                        <h2>Grupo con mayor aprovechamiento</h2>
+                        <div class="numero-dash-kpi destacado-grupo" id="grupoMayor">3A</div>
+                    </div>
+
+                </div>
+
+                <div class="layout-dash-inferior">
+                    
+                    <div class="tarjeta-dash-grafica-ancha">
+                        <h2>Rendimiento por campo formativo</h2>
+                        <div class="box-canvas-rendimiento">
+                            <canvas id="canvasRendimientoCampos"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-dash-lateral">
+                        <div class="icono-dash-kpi">
+                            <img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Menor Aprovechamiento">
+                        </div>
+                        <h2>Grupo con menor aprovechamiento</h2>
+                        <div class="numero-dash-kpi destacado-grupo" id="grupoMenor">2B</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="UP Chiapas">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../JS/script.js"></script>
+</body>
+</html>
