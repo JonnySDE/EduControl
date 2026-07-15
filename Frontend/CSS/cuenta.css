@@ -1,8 +1,3 @@
-/* ==============================================================
-   SECCIÓN 1: ELEMENTOS COMPARTIDOS EN TODAS LAS VISTAS
-   (Header, Sidebar, Footer, Logos, Reset, Fuente, Dashboard base)
-   ============================================================== */
-
 /* Importar Poppins desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -17,7 +12,7 @@
 /* Estructura grid del dashboard */
 .dashboard-body {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 260px 1fr;
     grid-template-rows: 80px 1fr auto;
     grid-template-areas:
         "header header"
@@ -56,8 +51,8 @@
 /* --- Sidebar --- */
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: #f1f3f6; /* Gris de tu menú lateral */
-    border-right: 2px solid #e0e0e0;
+    background-color: white; /* Gris de tu menú lateral */
+    border-right: 1px solid #e2e8f0;
     padding-top: 30px;
 }
 
@@ -65,6 +60,8 @@
     display: flex;
     flex-direction: column;
     gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+    
+    
 }
 
 .item-menu {
@@ -76,7 +73,7 @@
     padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
     border-radius: 10px;
     text-decoration: none;
-    color: #000;
+    color: #0F2D52;
     font-weight: 600;
     font-size: 1.05rem;
     transition: background 0.3s;
@@ -87,10 +84,15 @@
     background-color: #e2e6ea;
 }
 
-.item-menu.active {
-    background-color: rgba(18, 84, 166, 0.6);
-    color: #000;
-    font-weight: 600;        /* ojo: bold puede cambiar el ancho del texto, ver nota abajo */
+/* Mismo efecto de "módulo activo" que usa Registro (item-activo) */
+.item-menu.active,
+.item-menu.item-activo {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    color: #0F2D52;
+    font-weight: 600;
 }
 
 .item-menu img {
@@ -104,7 +106,7 @@
    sin romper a las demás. Ver sección 2 para el ajuste de esta vista. */
 .dashboard-main {
     grid-area: main;
-    padding: 35px 50px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -140,31 +142,29 @@
    para que este bloque solo aplique aquí */
 
 .vista-cuenta .dashboard-main {
-    align-items: stretch; /* evita que el formulario se centre y se recorra */
+    align-items: center; /* centra el bloque igual que en Registro */
 }
 
 .titulo-perfil {
     font-size: 3rem;
     color: #0F2D52;
     margin-bottom: 30px;
-    margin-left: 30px;
-    align-self: flex-start;
+    width: 100%;
+    max-width: 1150px; /* mismo ancho que contenedor-formulario, para que el borde izq. coincida */
 }
 
 .contenedor-formulario {
     display: grid;
-    grid-template-columns: 800px 800px; /* columna de foto fija + resto del formulario */
+    grid-template-columns: 400px 1fr; /* columna de foto fija + resto del formulario */
     justify-content: center;
     gap: 60px;
     align-items: start;
     margin-top: 0px;
-    padding: 0 20px;
     width: 100%;       /* fuerza a ocupar todo el ancho del main */
-    max-width: 1100px; /* evita que se vea gigante en pantallas anchas */
+    max-width: 1150px; /* mismo ancho que el dashboard de Registro */
 }
 
 .columna-foto {
-    margin-left: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,7 +174,6 @@
 .foto-placeholder {
     width: 400px;
     height: 400px;
-    margin-left: 150px;
     border-radius: 50%;
     background-color: #e0e0e0;
     overflow: hidden;
@@ -195,7 +194,6 @@
     font-size: 1.5rem;
     font-weight: 500;
     margin-top: 35px;
-    margin-left: 180px;
     color: #000000;
     display: flex;
     align-items: center;
@@ -271,23 +269,21 @@
    ============================================================== */
 
 .vista-editar-foto .dashboard-main {
-    align-items: flex-start;
+    align-items: center;
 }
 
 .vista-editar-foto .titulo-perfil {
-    font-size: 3rem;
-    color: #0F2D52;
     margin-bottom: 40px;
-    align-self: flex-start;
 }
 
 /* Contenedor: 2 columnas — foto | resto del formulario */
 .vista-editar-foto .contenedor-editar-foto {
     display: grid;
     grid-template-columns: 400px 1fr;
-    column-gap: 100px;
+    column-gap: 60px;
     align-items: start;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1150px; /* mismo ancho que Cuenta y Registro */
     margin-top: 20px;
 }
 

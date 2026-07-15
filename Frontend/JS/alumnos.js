@@ -238,12 +238,6 @@ async function inicializarVerAlumno() {
         document.getElementById('info-grupo').innerText = obtenerNombreGrupo(alumno.idGrupo);
         document.getElementById('info-lista').innerText = alumno.numeroLista ?? "---";
 
-        // Campos que vienen de otros módulos (aún no implementados)
-        document.getElementById('info-tareas').innerText = alumno.tareas || "---";
-        document.getElementById('info-disciplina').innerText = alumno.disciplina || "---";
-        document.getElementById('info-asistencia').innerText = alumno.asistencia || "---";
-        document.getElementById('info-examen').innerText = alumno.examen || "---";
-        document.getElementById('info-participacion').innerText = alumno.participacion || "---";
         document.getElementById('info-promedio').innerText = alumno.promedioFinal || "---";
 
     } catch (error) {
@@ -292,11 +286,6 @@ async function inicializarEditarAlumno() {
         if (selectGrupo) llenarSelectGrupos(selectGrupo, alumno.idGrupo);
         document.getElementById('edit-lista').value = alumno.numeroLista || '';
 
-        document.getElementById('edit-tareas').value = alumno.tareas || '';
-        document.getElementById('edit-disciplina').value = alumno.disciplina || '';
-        document.getElementById('edit-asistencia').value = alumno.asistencia || '';
-        document.getElementById('edit-examen').value = alumno.examen || '';
-        document.getElementById('edit-participacion').value = alumno.participacion || '';
         document.getElementById('edit-promedio').value = alumno.promedioFinal || '';
 
     } catch (error) {
@@ -314,11 +303,6 @@ async function inicializarEditarAlumno() {
             apellidoPaterno: document.getElementById('edit-apellido-paterno').value,
             apellidoMaterno: document.getElementById('edit-apellido-materno').value,
             numeroLista: parseInt(document.getElementById('edit-lista').value),
-            tareas: document.getElementById('edit-tareas').value,
-            disciplina: document.getElementById('edit-disciplina').value,
-            asistencia: document.getElementById('edit-asistencia').value,
-            examen: document.getElementById('edit-examen').value,
-            participacion: document.getElementById('edit-participacion').value,
             promedioFinal: parseFloat(document.getElementById('edit-promedio').value)
         };
 

@@ -1,8 +1,7 @@
+/* Importar Poppins desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ==========================================
-   1. ESTILOS GLOBALES Y BASE DE LA APP
-   ========================================== */
+/* Aplicar a todo el sistema */
 * {
     margin: 0;
     padding: 0;
@@ -13,14 +12,14 @@
 /* Estructura grid del dashboard */
 .dashboard-body {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 260px 1fr;
     grid-template-rows: 80px 1fr auto;
     grid-template-areas:
         "header header"
         "sidebar main"
         "footer footer";
     min-height: 100vh;
-    background-color: #0F2D52; /* Evita la línea blanca al final de la página */
+    background-color: #0F2D52; /* evita la línea blanca al final de la página */
 }
 
 /* --- Header --- */
@@ -52,15 +51,17 @@
 /* --- Sidebar --- */
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: #f1f3f6; /* Gris de tu menú lateral */
-    border-right: 2px solid #e0e0e0;
+    background-color: white; /* Gris de tu menú lateral */
+    border-right: 1px solid #e2e8f0;
     padding-top: 30px;
 }
 
 .menu-lateral {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Separación uniforme entre módulos */
+    gap: 30px; /* Aumentado de 10px a 20px para separar más los módulos */
+    
+    
 }
 
 .item-menu {
@@ -69,23 +70,28 @@
     align-items: center;
     gap: 15px;
     width: 100%;
-    padding: 22px 30px; /* Padding vertical para dar presencia */
+    padding: 22px 30px; /* Aumentado el padding vertical para más presencia */
     border-radius: 10px;
     text-decoration: none;
-    color: #000;
+    color: #0F2D52;
     font-weight: 600;
     font-size: 1.05rem;
     transition: background 0.3s;
-    border: none;
+    border: none;             /* que ningún estado agregue borde */
 }
 
 .item-menu:hover {
     background-color: #e2e6ea;
 }
 
-.item-menu.active {
-    background-color: rgba(18, 84, 166, 0.6); /* Azul semitransparente de activo */
-    color: #000;
+/* Mismo efecto de "módulo activo" que usa Registro (item-activo) */
+.item-menu.active,
+.item-menu.item-activo {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    color: #0F2D52;
     font-weight: 600;
 }
 
@@ -94,15 +100,17 @@
     height: auto;
 }
 
-/* --- Contenido principal --- */
+/* --- Contenido principal: contenedor base neutro ---
+   IMPORTANTE: no lleva align-items aquí, para que cada vista
+   decida su propio comportamiento (centrado o alineado a la izquierda)
+   sin romper a las demás. Ver sección 2 para el ajuste de esta vista. */
 .dashboard-main {
     grid-area: main;
-    padding: 35px 50px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
     overflow-y: auto;
-    align-items: flex-start;
 }
 
 /* --- Footer --- */
@@ -111,8 +119,8 @@
     background-color: #0F2D52;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Contenido alineado a la derecha */
-    padding: 0 40px;
+    justify-content: flex-end; /* Mantiene el contenido a la derecha */
+    padding: 0 40px; /* Padding vertical generoso para que no toque los bordes */
     color: white;
     font-size: 0.75rem;
     text-align: right;

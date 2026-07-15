@@ -44,6 +44,23 @@ public class PeriodoDAO {
         return null;
     }
 
+    // Verifica si un periodo esta abierto (para bloquear registros en periodos cerrados)
+    public boolean estaAbierto(int idPeriodo) throws SQLException {
+        String sql = "SELECT estado FROM periodo WHERE idPeriodo = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idPeriodo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return "Abierto".equals(rs.getString("estado"));
+            }
+        }
+        return false;
+    }
+
     public void crear(Periodo periodo) throws SQLException {
         String sql = "INSERT INTO periodo (estado, periodo, idGrupo, idCampoFormativo) VALUES (?, ?, ?, ?)";
 
@@ -96,11 +113,6 @@ public class PeriodoDAO {
             stmt.setInt(1, idPeriodo);
             stmt.executeUpdate();
         }
-    }
-
-    public boolean estaAbierto(int idPeriodo) throws SQLException {
-        Periodo periodo = obtenerPorId(idPeriodo);
-        return periodo != null && "Abierto".equals(periodo.getEstado());
     }
 
     private Periodo mapear(ResultSet rs) throws SQLException {

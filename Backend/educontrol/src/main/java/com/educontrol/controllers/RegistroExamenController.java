@@ -102,6 +102,11 @@ public class RegistroExamenController {
                     return;
                 }
 
+                if (!periodoDAO.estaAbierto(registro.getIdPeriodo())) {
+                    ctx.status(403).result("El periodo esta cerrado. No se pueden eliminar registros.");
+                    return;
+                }
+
                 dao.eliminar(id);
                 ctx.result("Registro de examen eliminado correctamente");
             } catch (SQLException e) {

@@ -57,7 +57,7 @@
    ========================================= */
 .dashboard-sidebar {
     grid-area: sidebar;
-    background-color: #f1f3f6; /* Gris de tu menú lateral */
+    background-color: white; /* Gris de tu menú lateral */
     border-right: 2px solid #e0e0e0;
     padding-top: 30px;
 }

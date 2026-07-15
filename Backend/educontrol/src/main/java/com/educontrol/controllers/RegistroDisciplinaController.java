@@ -102,6 +102,11 @@ public class RegistroDisciplinaController {
                     return;
                 }
 
+                if (!periodoDAO.estaAbierto(registro.getIdPeriodo())) {
+                    ctx.status(403).result("El periodo esta cerrado. No se pueden eliminar registros.");
+                    return;
+                }
+
                 dao.eliminar(id);
                 ctx.result("Registro de disciplina eliminado correctamente");
             } catch (SQLException e) {
