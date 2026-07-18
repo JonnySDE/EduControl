@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52;
+}
+
+/* --- Header --- */
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px;
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logos-institucionales img {
+    height: 75px;
+    width: auto;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: white; 
+    border-right: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    
+    
+}
+
+.item-menu {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 22px 30px; 
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0F2D52;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    border: none;          
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu.active,
+.item-menu.item-activo {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    color: #0F2D52;
+    font-weight: 600;
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+.dashboard-main {
+    grid-area: main;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* --- Footer --- */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    padding: 0 40px; 
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 85px; 
+}
+
+.dashboard-footer img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+
+/* ==========================================
+   2. ESTILOS DEL MÓDULO DE EVALUACIÓN
+   ========================================== */
+
+/* Layout del Header interno */
+.header-evaluacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.titulo-perfil {
+    font-size: 2.2rem;
+    color: #0F2D52;
+    align-self: flex-start;
+}
+
+.tabla-contenedor-full {
+    width: 85%;              
+    max-width: 900px;
+    margin: 20px 0 40px 10px;
+    border: 1px solid #b3cadd; 
+    border-radius: 12px;       
+    overflow: hidden;          
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.tabla-evaluacion {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.tabla-evaluacion th {
+    background-color: #7FA9D1; 
+    color: #0F2D52;           
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: 700;          
+    text-align: center;
+    border: 1px solid #b3cadd; 
+}
+
+/* Celdas de la Tabla */
+.tabla-evaluacion td {
+    padding: 16px;
+    border: 1px solid #e2e8f0; 
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    width: 50%;
+}
+
+.tabla-evaluacion .fila-total td {
+    font-weight: 700;
+    background-color: #f8fafc;
+    color: #0F2D52;
+}
+
+.tabla-evaluacion tbody tr:hover {
+    background-color: #f8fafc; 
+}
+
+input[type="number"] {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Botones de Acción --- */
+.acciones-evaluacion {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px;                   
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 85%;
+    max-width: 900px;
+}
+
+/* Estilo común de botones */
+.btn-limpiar, .btn-guardar {
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    gap: 15px;              
+    padding: 12px 40px;
+    border: none;           
+    border-radius: 20px;    
+    font-weight: 600;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-limpiar:hover, .btn-guardar:hover {
+    transform: scale(1.02);
+    filter: brightness(0.95);
+}
+
+.btn-limpiar img, .btn-guardar img {
+    width: 28px;            
+    height: 28px;
+    vertical-align: middle; 
+}
+
+.btn-limpiar { 
+    background-color: #E6CB37; 
+    color: #000;
+}
+
+.btn-guardar { 
+    background-color: #3BC66E; 
+    color: #000; 
+}
+
+/* Contenedor de Toasts (Notificaciones) */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ALERTAS */
+#toast-container {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.alerta-mensaje {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    background: #fff;
+    border: 1.5px solid;
+    animation: alertaEntrada 0.25s ease-out;
+}
+
+.alerta-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.alerta-exito {
+    border-color: #1a7d3a;
+    color: #1a7d3a;
+}
+.alerta-exito .alerta-icono { background: #1a7d3a; }
+
+.alerta-advertencia {
+    border-color: #d99a1c;
+    color: #7a5b00;
+}
+.alerta-advertencia .alerta-icono { background: #f0ad4e; }
+
+.alerta-salida {
+    animation: alertaSalida 0.3s ease-in forwards;
+}
+
+@keyframes alertaEntrada {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes alertaSalida {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translateX(20px); }
+}

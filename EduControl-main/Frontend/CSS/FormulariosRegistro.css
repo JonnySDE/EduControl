@@ -1,0 +1,653 @@
+.dashboard-layout {
+    display: flex;
+    min-height: calc(100vh - 140px);
+    background-color: #f8fafc;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-tarjeta-blanca {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-formulario {
+    font-size: 2,2REM;
+    font-weight: 700;
+    color: #0b2545;
+    margin: 0 0 15px 0;
+}
+
+/* 1. Fila de Filtros Superiores */
+.fila-filtros-superiores {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.grupo-campo-filtro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.grupo-campo-filtro label {
+    font-weight: 600;
+    color: #0b2545;
+    font-size: 13.5px;
+}
+
+.input-bloqueado-bd {
+    height: 36px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 0 15px;
+    color: #475569;
+    background-color: #f1f5f9;
+    font-size: 13.5px;
+    font-weight: 500;
+    outline: none;
+    box-sizing: border-box;
+    cursor: not-allowed;
+    text-align: center;
+}
+
+.seccion-datos-examen {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.fila-formulario-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.label-ancho-fijo {
+    font-weight: 600;
+    color: #0b2545;
+    min-width: 130px;
+    font-size: 14px;
+}
+
+.fila-totales-pregunta {
+    display: flex;
+    gap: 30px;
+    padding-left: 145px;
+}
+
+.item-total-corto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-total-corto label {
+    color: #0b2545;
+    font-weight: 500;
+    font-size: 13.5px;
+}
+
+.select-pildora, .select-pildora-largo {
+    height: 36px;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 0 15px;
+    color: #334155;
+    background-color: #ffffff;
+    font-size: 13.5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.select-pildora-largo {
+    width: 100%;
+}
+
+.input-linea-texto {
+    flex: 1;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #94a3b8;
+    font-size: 14px;
+    color: #334155;
+    outline: none;
+    background: transparent;
+}
+
+.input-pildora-corto {
+    width: 65px;
+    height: 30px;
+    border: 1px solid #cbd5e1;
+    border-radius: 15px;
+    text-align: center;
+    outline: none;
+    font-size: 13.5px;
+}
+
+.contenedor-tabla-scroll {
+    max-height: 280px; 
+    overflow-y: auto;   
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.tabla-registro-datos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-registro-datos th {
+    position: sticky;
+    top: 0;
+    background-color: #7ba4c8;
+    color: #0b2545;
+    font-weight: 700;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid #0b2545;
+    z-index: 1;
+}
+
+.tabla-registro-datos td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #cbd5e1;
+    border-right: 1px solid #cbd5e1;
+    text-align: center;
+    font-size: 13.5px;
+    background-color: #ffffff;
+}
+
+.tabla-registro-datos td:last-child {
+    border-right: none;
+}
+
+.tabla-registro-datos tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-registro-datos td.celda-nombre-alumno {
+    text-align: left;
+    color: #334155;
+    font-weight: 500;
+}
+
+/* Estilos de inputs dentro de la tabla */
+.input-tabla-pildora {
+    width: 80px;
+    height: 28px;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.input-tabla-linea {
+    width: 70px;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    text-align: center;
+    outline: none;
+    background: transparent;
+}
+
+.contenedor-tabla-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.contenedor-tabla-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+.contenedor-tabla-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.contenedor-tabla-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.contenedor-boton-final {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto; 
+}
+
+.boton-guardar-estilo {
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.boton-guardar-estilo img {
+    width: 14px;
+    height: 14px;
+    filter: brightness(0) invert(1);
+}
+/* ==========================================================================
+   ESTILOS ADICIONALES PARA LA ALERTA FLOTANTE (TOAST DE ÉXITO)
+   ========================================================================== */
+
+.alerta-toast {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    background-color: #ffffff;
+    border: 2px solid #28a745; 
+    border-radius: 8px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+.alerta-toast.mostrar-alerta {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.icono-check {
+    width: 28px;
+    height: 28px;
+    background-color: #e8f5e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icono-check svg {
+    width: 16px;
+    height: 16px;
+}
+
+.texto-alerta {
+    color: #1b1e21;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* ==========================================================================
+   ESTILOS PARA BOTONES DE ASISTENCIA PERSONALIZADOS POR COLOR
+   ========================================================================== */
+
+.radio-asistencia {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.radio-asistencia:hover {
+    transform: scale(1.15);
+}
+
+.radio-verde {
+    accent-color: #28a745; 
+}
+
+.radio-rojo {
+    accent-color: #dc3545; 
+}
+
+.radio-amarillo {
+    accent-color: #ffc107; 
+}
+
+.tabla-registro-datos th[rowspan="2"] {
+    z-index: 2;
+}
+/* ==========================================
+   ESTILOS MINIMALISTAS PARA INPUTS DE TABLA
+   ========================================== */
+
+.input-linea-tabla {
+    width: 100%;
+    padding: 6px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccd1d9; 
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-linea-tabla:focus {
+    border-bottom: 2px solid #4a90e2; 
+    background-color: rgba(74, 144, 226, 0.03); 
+}
+
+.input-linea-tabla::placeholder {
+    color: #a0a6b2;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.tabla-registro-datos td {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+/* ==========================================================================
+   VISTA: CALIFICACIONES GENERALES (ESTILOS COMPACTOS Y BD)
+   ========================================================================== */
+
+.fila-filtros-compacta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px; 
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.item-filtro-mini {
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+}
+
+.item-filtro-mini label {
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #0b2545; 
+    font-size: 14px;
+}
+
+.input-bloqueado-bd {
+    background-color: #f0f4f8; 
+    border: 1px solid #d1d9e6;
+    border-radius: 20px; 
+    color: #555555;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contenedor-buscador-integrado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contenedor-buscador-integrado label {
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #0b2545;
+    font-size: 14px;
+}
+
+.contenedor-buscador {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-buscador-lupa {
+    width: 220px;
+    padding: 6px 35px 6px 15px;
+    border: 1px solid #0b2545;
+    border-radius: 20px; 
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    color: #333333;
+}
+
+.icono-lupa-busqueda {
+    position: absolute;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+.celda-calificacion-bd {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #333333;
+    font-size: 14px;
+}
+
+.tabla-registro-datos td.celda-nombre-alumno {
+    text-align: left;
+    padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+}
+/* ==========================================================================
+   VISTA: DETERMINAR STATUS (APROBADO / REPROBADO)
+   ========================================================================== */
+
+.fila-filtros-compacta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.item-filtro-mini {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-filtro-mini label {
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #0b2545;
+    font-size: 15px;
+}
+
+.contenedor-buscador-integrado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contenedor-buscador-integrado label {
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #0b2545;
+    font-size: 15px;
+}
+
+.contenedor-buscador {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-buscador-lupa {
+    width: 240px;
+    padding: 6px 35px 6px 15px;
+    border: 1px solid #0b2545;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    color: #333333;
+}
+
+.icono-lupa-busqueda {
+    position: absolute;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+.tabla-registro-datos th {
+    background-color: #7fa9d1; 
+    color: #0b2545;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #b0c8df;
+}
+
+.tabla-registro-datos td {
+    border: 1px solid #b0c8df;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.celda-centro {
+    text-align: center;
+    color: #333333;
+}
+
+.tabla-registro-datos td.celda-nombre-alumno {
+    text-align: left;
+    padding-left: 15px !important;
+    color: #333333;
+}
+
+.icono-status {
+    width: 22px;
+    height: 22px;
+    display: block;
+    margin: 0 auto;
+}
+/* ==========================================================================
+   VISTA: RENDIMIENTO ACADÉMICO (DASHBOARD DINÁMICO)
+   ========================================================================== */
+
+.contenedor-grid-rendimiento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tarjeta-analitica {
+    background: #ffffff;
+    border: 1px solid #b0c8df;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+}
+
+.tarjeta-analitica h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #0b2545;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.contenedor-progreso-circular {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.texto-promedio-centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.contenedor-grafica-barras {
+    width: 100%;
+    height: 140px;
+    position: relative;
+}
+
+.tarjeta-resumen-horizontal {
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 15px 25px;
+}
+
+.fila-resumen-dato {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333333;
+}
+
+.fila-resumen-dato:last-child {
+    margin-bottom: 0;
+}
+
+.valor-dato-resumen {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icono-resumen-svg {
+    width: 24px;
+    height: 24px;
+}

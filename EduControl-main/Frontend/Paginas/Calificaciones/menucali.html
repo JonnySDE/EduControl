@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduControl - Menú Calificaciones</title>
+    <link class="recurso-estilo" rel="stylesheet" href="../../CSS//Contenido.css">
+    <link class="recurso-estilo" rel="stylesheet" href="../../CSS/cali.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <div class="layout-contenedor-principal">
+
+        <aside class="dashboard-sidebar">
+            <nav class="menu-lateral">
+                <a href="../Cuenta/Cuenta.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
+                </a>
+                <a href="../Alumnos/Alumnos.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
+                </a>
+                <a href="../Evaluacion/Evaluacion.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación
+                </a>
+                <a href="../Registro/principal.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro
+                </a>
+                <a href="menucali.html" class="item-menu item-activo">
+                    <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación
+                </a>
+                <a href="../Grupos/listagrupos.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo
+                </a>
+                <!-- CORREGIDO: Se añadió la ruta hacia Reportes -->
+                <a href="../Reportes/menurepo.html" class="item-menu">
+                    <img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            
+            <div class="tarjeta-blanca-contenido">
+                
+                <div class="encabezado-modulo">
+                    <div class="titulo-con-icono">
+                        <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación" class="icono-titulo-modulo">
+                        <h1 class="titulo-formulario">Calificación</h1>
+                    </div>
+                    <p class="subtitulo-modulo">Seleccione la opción que desea realizar</p>
+                </div>
+
+                <div class="grid-tarjetas-opciones">
+                    
+                    <div class="tarjeta-opcion">
+                        <div class="tarjeta-info">
+                            <h3>Calificaciones generales</h3>
+                            <p>Registrar calificaciones generales alumnos</p>
+                        </div>
+                        <a href="calificacionesgenerales.html" class="boton-flecha-modulo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tarjeta-opcion">
+                        <div class="tarjeta-info">
+                            <h3>Determinar aprobado/reprobado</h3>
+                            <p>Determinar alumnos aprobados/reprobados</p>
+                        </div>
+                        <a href="determinarestatus.html" class="boton-flecha-modulo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tarjeta-opcion">
+                        <div class="tarjeta-info">
+                            <h3>Rendimiento académico</h3>
+                            <p>Observar el rendimiento académico</p>
+                        </div>
+                        <a href="rendimiento.html" class="boton-flecha-modulo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+
+                </div> 
+            </div> 
+        </main>
+
+    </div> 
+    
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="Logo Universidad">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+    <script src="../../JS/preuba.js"></script>
+
+</body>
+</html>

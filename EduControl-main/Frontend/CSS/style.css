@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow: hidden; 
+}
+
+/* =========================================
+   2. ESTRUCTURA PRINCIPAL (LAYOUT)
+   ========================================= */
+.contenedor-principal {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* =========================================
+   3. PANEL IZQUIERDO (AZUL - BRANDING)
+   ========================================= */
+.panel-izquierdo {
+    flex: 1;
+    background-color: #0F2D52;
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; 
+}
+
+.icono-fondo {
+    position: absolute;
+    opacity: 0.18;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+.campana {
+    width: 250px; 
+    top: 6%; 
+    left: 6%;
+    transform: rotate(-10deg);
+}
+
+.lapiz {
+    width: 200px;
+    top: 6%;
+    right: 8%;
+    transform: rotate(15deg);
+}
+
+.hoja {
+    width: 135px;
+    top: 40%;
+    left: -2%; 
+    transform: rotate(-25deg);
+}
+
+.escuela {
+    width: 170px;
+    top: 45%;
+    right: -2%;
+    transform: rotate(18deg);
+}
+
+.mochila {
+    width: 170px;
+    bottom: 5%;
+    right: 8%;
+    transform: rotate(-10deg);
+}
+
+.graduado {
+    width: 320px; 
+    bottom: -1%; 
+    left: -1%;   
+    opacity: 0.20;
+    transform: rotate(-15deg);
+}
+
+.mensaje-bienvenida {
+    z-index: 2; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icono-centro {
+    width: 120px; 
+    margin-bottom: 25px;
+}
+
+.mensaje-bienvenida h1 {
+    font-weight: 300; 
+    font-size: 2.8rem;
+    line-height: 1.2;
+}
+
+.texto-resaltado {
+    font-weight: 800; 
+    font-size: 4.2rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* =========================================
+   4. PANEL DERECHO (BLANCO - LOGIN FORM)
+   ========================================= */
+.panel-derecho {
+    flex: 1;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta-login {
+    background-color: white;
+    padding: 60px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    width: 90%;
+    max-width: 550px;
+    text-align: center;
+}
+
+.tarjeta-login h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.selector-rol {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.boton-rol {
+    padding: 8px 30px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s; 
+}
+
+.boton-rol.activo {
+    border-color: #0F2D52;
+    color: #153258;
+    box-shadow: 0 0 0 1px #0F2D52; 
+}
+
+.grupo-input {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.grupo-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #222;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.enlace-olvido {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    color: #153258;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+.boton-ingresar {
+    padding: 12px 45px;
+    background-color: #153258;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.boton-ingresar:hover {
+    background-color: #0d213a; 
+}
+
+/* ESTILOS ADICIONALES PARA LA VISTA 2 DE RECUPERAR CONTRASEÑA*/
+.contenedor-icono-circular {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto; 
+}
+
+.contenedor-icono-circular img {
+    width: 50px; 
+    height: auto;
+}
+
+.texto-instruccion {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    text-align: left; 
+}
+
+.boton-con-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%; 
+    margin-bottom: 25px;
+}
+
+.boton-con-icono img {
+    width: 20px;
+    height: auto;
+}
+
+.enlace-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #153258;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.enlace-volver:hover {
+    color: #0d213a;
+}
+
+.enlace-volver img {
+    width: 18px;
+    height: auto;
+}

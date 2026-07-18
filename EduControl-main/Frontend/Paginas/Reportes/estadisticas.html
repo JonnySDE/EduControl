@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduControl - Estadísticas Académicas</title>
+    <link class="styles-link" rel="stylesheet" href="../../CSS/Contenido.css">
+    <link class="recurso-estilo" rel="stylesheet" href="../../CSS/reportes.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <nav class="menu-lateral">
+                <a href="../Cuenta/Cuenta.html" class="item-menu"><img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta</a>
+                <a href="../Alumnos/Alumnos.html" class="item-menu"><img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno</a>
+                <a href="../Evaluacion/Evaluacion.html" class="item-menu"><img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación</a>
+                <a href="../Registro/principal.html" class="item-menu"><img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro</a>
+                <a href="../Calificaciones/menucali.html" class="item-menu"><img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación</a>
+                <a href="../Grupos/listagrupos.html" class="item-menu"><img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo</a>
+                <a href="menurepo.html" class="item-menu item-activo"><img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes</a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="contenedor-tarjeta-blanca">
+                
+                <h1 class="titulo-formulario" style="font-size: 2rem; font-weight: bold; color: #000000; margin-bottom: 25px; margin-top: 0;">
+                    Estadísticas académicas
+                </h1>
+
+                <div class="fila-kpis-estadisticas">
+                    
+                    <div class="tarjeta-kpi-chica">
+                        <h2>Promedio</h2>
+                        <div class="valor-kpi-texto" id="txtPromedio">8.6</div>
+                    </div>
+
+                    <div class="tarjeta-kpi-chica">
+                        <h2>Aprobados</h2>
+                        <div class="contenedor-grafico-circular">
+                            <canvas id="canvasAprobados"></canvas>
+                            <div class="porcentaje-centro" id="txtAprobados">94%</div>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-kpi-chica">
+                        <h2>Reprobados</h2>
+                        <div class="contenedor-grafico-circular">
+                            <canvas id="canvasReprobados"></canvas>
+                            <div class="porcentaje-centro" id="txtReprobados">6%</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="fila-graficos-inferior">
+                    
+                    <div class="tarjeta-kpi-grande flex-grafica">
+                        <h2>Periodos</h2>
+                        <div class="box-canvas-periodos">
+                            <canvas id="canvasPeriodos"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-kpi-grande">
+                        <h2>Asistencia</h2>
+                        <div class="valor-kpi-asistencia" id="txtAsistencia">90%</div>
+                        <div class="icono-asistencia-footer">
+                            <img src="../../Img/IconosDashboard/Registro.svg" alt="Asistencia Icon">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="UP Chiapas">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../JS/preuba.js"></script>
+</body>
+</html>

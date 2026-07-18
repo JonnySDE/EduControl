@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduControl - Ver Información</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/alumnos.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="logo-header">
+            <img src="../../Img/Logos/LogoEduControl.png" alt="EduControl">
+        </div>
+        <div class="logos-institucionales">
+            <img src="../../Img/Logos/logoPrimaria.png" alt="Escuela Ignacio Zaragoza">
+            <img src="../../Img/Logos/secretaria.png" alt="SEP">
+        </div>
+    </header>
+
+    <aside class="dashboard-sidebar">
+        <nav class="menu-lateral">
+            <a href="../Cuenta/Cuenta.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Cuenta.svg" alt="Cuenta"> Cuenta
+            </a>
+            <a href="../Alumnos/Alumnos.html" class="item-menu active">
+                <img src="../../Img/IconosDashboard/Alumno.svg" alt="Alumno"> Alumno
+            </a>
+            <a href="../Evaluacion/Evaluacion.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Evaluacion.svg" alt="Evaluación"> Evaluación
+            </a>
+            <a href="../Registro/principal.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Registro.svg" alt="Registro"> Registro
+            </a>
+            <a href="../Calificaciones/menucali.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Calificacion.svg" alt="Calificación"> Calificación
+            </a>
+            <a href="../Grupos/listagrupos.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Gruposvg.svg" alt="Grupo"> Grupo
+            </a>
+            <a href="../Reportes/menurepo.html" class="item-menu">
+                <img src="../../Img/IconosDashboard/Reportes.svg" alt="Reportes"> Reportes
+            </a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-main">
+        <h2 class="titulo-perfil">Gestión de alumnos</h2>
+        
+        <div class="contenedor-gestion">
+            <div class="controles-superiores">
+                <div class="buscar-grupo">
+                    <label>Buscar: </label>
+                    <input type="text" placeholder="">
+                    <img src="../../Img/IconosAlumnos/lupa.svg">
+                </div>
+                <button class="btn-agregar" onclick="window.location.href='RegistrarAlumno.html'">
+                    <img src="../../Img/IconosAlumnos/agregar.svg"> Agregar Alumno
+                </button>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table class="tabla-alumnos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Grupo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-cuerpo">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+        <img src="../../Img/Logos/LogoUp.png" alt="Logo Universidad">
+        <p>Ingeniería en Tecnologías de la Información e Innovación Digital<br>Universidad Politécnica de Chiapas</p>
+    </footer>
+
+    <div id="modal-eliminar" class="modal-overlay" style="display: none;">
+        <div class="modal-contenido">
+            <h3>¿Estás seguro que deseas eliminar este alumno?</h3>
+            <div class="acciones-modal">
+                <button id="btn-cancelar" class="btn-modal-cancelar">
+                    <img src="../../Img/IconosAlumnos/eliminarAlumno.svg">Cancelar
+                </button>
+                <button id="btn-confirmar" class="btn-modal-confirmar">
+                    <img src="../../Img/IconosAlumnos/confirmarEliminacion.svg">Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="../../JS/alumnos.js"></script>
+</body>
+</html>

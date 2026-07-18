@@ -1,0 +1,376 @@
+/* ==========================================================================
+   MÓDULO SELECCIÓN DE CALIFICACIONES (cali.css)
+   ========================================================================== */
+
+.contenedor-calificaciones-menu {
+    width: 100%;
+    max-width: 1150px;
+    text-align: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.encabezado-modulo {
+    margin-bottom: 50px;
+}
+
+.titulo-con-icono {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.icono-titulo-modulo {
+    width: 40px;
+    height: 40px;
+}
+
+.subtitulo-modulo {
+    font-size: 1.5rem;
+    color: #333333;
+    font-weight: 500;
+    margin: 0;
+}
+
+.grid-tarjetas-opciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 20px;           
+    flex-wrap: nowrap;     
+    margin-top: 25px;
+    width: 100%;
+    overflow-x: auto;      
+}
+
+.tarjeta-opcion {
+    background-color: #ffffff;
+    border: 1px solid #c8d6e5;
+    border-radius: 30px; 
+    flex: 1;               
+    min-width: 260px;      
+    max-width: 320px;      
+    min-height: 240px;
+    padding: 35px 20px 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15); 
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-info {
+    text-align: center;
+    width: 100%;
+}
+
+.tarjeta-info h3 {
+    font-size: 1.4rem;
+    color: #0b2545; 
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.tarjeta-info p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.boton-flecha-modulo {
+    background-color: #0b2545;
+    color: #ffffff;
+    width: 70px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(11, 37, 69, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.boton-flecha-modulo:hover {
+    background-color: #134074;
+    transform: scale(1.05);
+}
+
+.boton-flecha-modulo svg {
+    transition: transform 0.2s ease;
+}
+
+.boton-flecha-modulo:hover svg {
+    transform: translateX(4px); 
+}
+/* ==========================================================================
+   VISTA: CALIFICACIONES GENERALES
+   ========================================================================== */
+
+.barra-filtros-cali {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 1.4rem;
+    color: #000000;
+}
+
+.grupo-filtro {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.buscador-derecha {
+    margin-left: auto; 
+}
+
+.select-pildora-cali {
+    width: 110px;
+    height: 42px;
+    border: 2px solid #0b2545;
+    border-radius: 20px;
+    outline: none;
+    padding: 0 35px 0 15px;
+    font-size: 1.2rem;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none; 
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230b2545' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+}
+
+.input-buscar-contenedor {
+    position: relative;
+    display: flex;
+    align-items: center;
+width: 220px;
+}
+
+.input-busqueda-cali {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #0b2545;
+    border-radius: 20px;
+    padding: 0 40px 0 15px;
+    font-size: 1.1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.boton-lupa-cali {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabla-calificaciones-generales {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 35px;
+    background-color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.tabla-calificaciones-generales th {
+    background-color: #729ecb; 
+    color: #000000;
+    font-weight: 700;
+    padding: 14px;
+    border: 1px solid #4a4a4a;
+    text-align: center;
+}
+
+.tabla-calificaciones-generales td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #cbd5e1;
+    text-align: center;
+    color: #333;
+}
+
+.nombre-alumno-cali {
+    text-align: left !important;
+    padding-left: 20px !important;
+    font-weight: 500;
+    color: #000000 !important;
+}
+
+.fila-puntos-suspensivos td {
+    color: #666;
+    border-bottom: none;
+}
+
+.input-nota-pildora {
+    width: 110px;
+    height: 36px;
+    border: 1px solid #a0aec0;
+    border-radius: 18px;
+    outline: none;
+    text-align: center;
+    font-size: 1.1rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.2s;
+}
+
+.input-nota-pildora:focus {
+    border-color: #0b2545;
+}
+
+.input-nota-pildora::-webkit-inner-spin-button, 
+.input-nota-pildora::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.texto-aprobado {
+    color: #2ed573;
+    font-weight: 600;
+}
+
+.texto-reprobado {
+    color: #ff4757;
+    font-weight: 600;
+}
+
+.icono-check {
+    color: #2ed573;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.icono-cross {
+    color: #ff4757;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.grid-rendimiento-graficos {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.grid-rendimiento-resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.tarjeta-grafico-rendimiento {
+    background: #ffffff;
+    border: 1.5px solid #a0aec0;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tarjeta-grafico-rendimiento h3 {
+    font-size: 1.4rem;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.contenedor-circular-progreso {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.texto-centro-promedio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.contenedor-barra-grafico {
+    width: 100%;
+    height: 220px;
+}
+
+.tarjeta-resumen-datos {
+    background: #ffffff;
+    border: 1.5px solid #a0aec0;
+    border-radius: 4px;
+    padding: 22px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.titulo-resumen-tarjeta {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin: 0 0 25px 0;
+    font-weight: 500;
+}
+
+.fila-resumen-dato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: #000000;
+}
+
+.mt-secundario {
+    margin-top: 20px;
+}
+
+.numero-resumen {
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+.valor-con-icono {
+    display: flex;
+    align-items: center;
+}
+
+.icono-check-resumen {
+    color: #2ed573;
+    border: 2px solid #2ed573;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-left: 12px;
+}
+
+.icono-cross-resumen {
+    color: #ff4757;
+    border: 2px solid #ff4757;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}

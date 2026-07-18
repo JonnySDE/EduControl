@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52; 
+}
+
+/* --- Header --- */
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px;
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logos-institucionales img {
+    height: 75px;
+    width: auto;
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: white; 
+    border-right: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    
+    
+}
+
+.item-menu {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 22px 30px; 
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0F2D52;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    border: none;          
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu.active,
+.item-menu.item-activo {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    color: #0F2D52;
+    font-weight: 600;
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+.dashboard-main {
+    grid-area: main;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* --- Footer --- */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    padding: 0 40px; 
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 85px;
+}
+
+.dashboard-footer img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+
+/* ==============================================================
+   SECCIÓN 2: ESTILOS NUEVOS — VISTA "CUENTA" (Mi perfil)
+   ============================================================== */
+
+.vista-cuenta .dashboard-main {
+    align-items: center; 
+}
+
+.titulo-perfil {
+    font-size: 2.2rem;
+    color: #0F2D52;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1150px; 
+}
+
+.contenedor-formulario {
+    display: grid;
+    grid-template-columns: 400px 1fr; 
+    justify-content: center;
+    gap: 60px;
+    align-items: start;
+    margin-top: 0px;
+    width: 100%;       
+    max-width: 1150px; 
+}
+
+.columna-foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto-placeholder {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#preview-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.texto-foto {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 35px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.editar-icono {
+    width: 25px;  
+    height: 25px;
+}
+
+.columna-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.columna-datos label {
+    font-size: 1.4rem; 
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.columna-datos input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem; 
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.grupo-rol {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.boton-rol {
+    padding: 12px 35px;
+    border: 1px solid #0F2D52;
+    border-radius: 20px;
+    background: transparent;
+    color: #0F2D52;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.boton-rol.active {
+    background: #0F2D52;
+    color: white;
+}
+
+.link-editar {
+    color: #0F2D52;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+
+/* ==============================================================
+   SECCIÓN 3: VISTA "EDITAR FOTO" (Aislamiento con .vista-editar-foto)
+   ============================================================== */
+
+.vista-editar-foto .dashboard-main {
+    align-items: center;
+}
+
+.vista-editar-foto .titulo-perfil {
+    margin-bottom: 40px;
+}
+
+.vista-editar-foto .contenedor-editar-foto {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    column-gap: 60px;
+    align-items: start;
+    width: 100%;
+    max-width: 1150px; 
+    margin-top: 20px;
+}
+
+.vista-editar-foto .columna-izquierda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.vista-editar-foto .foto-preview-box {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    margin-left: 40px;
+    overflow: hidden;
+    background-color: #d1d1d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+.vista-editar-foto .foto-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vista-editar-foto .texto-foto-actual {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.vista-editar-foto .columna-derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 120px;
+    margin-top: 0; 
+}
+
+.vista-editar-foto .label-cambiar-foto {
+    font-weight: 500;
+    color: #333;
+    font-size: 1.9rem;
+    margin: 0;
+    margin-left: 80px;
+}
+
+.vista-editar-foto .btn-subir {
+    display: flex;
+    gap: 14px;
+    padding: 25px 70px;      
+    border: 2px solid #0F2D52;
+    border-radius: 30px;
+    color: #0F2D52;
+    font-weight: 600;
+    font-size: 1.90rem;     
+    cursor: pointer;
+    transition: 0.3s;
+    width: 700px;            
+    margin-left: 80px;
+
+}
+
+.vista-editar-foto .btn-subir:hover {
+    background-color: #0F2D52;
+    color: white;
+}
+
+.vista-editar-foto .btn-subir img {
+    width: 40px;
+    height: 40px;
+}
+
+/* --- Botones Cancelar / Guardar ---*/
+.vista-editar-foto .botones-accion {
+    margin-top: 120px;
+    margin-left: -400px;   
+    display: flex;
+    gap: 200px;
+}
+
+.vista-editar-foto .btn-cancelar,
+.vista-editar-foto .btn-guardar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 150px;    
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.90rem;
+    border: none;
+    cursor: pointer;
+}
+
+.vista-editar-foto .btn-cancelar { 
+    background-color: #FF3B3B; 
+    color: black; 
+}
+.vista-editar-foto .btn-guardar { 
+    background-color: #22C55E;
+    color: black; 
+}
+
+.vista-editar-foto .btn-cancelar img,
+.vista-editar-foto .btn-guardar img { 
+    width: 30px; 
+    height: 30x; 
+}
+
+/*  MODAL PARA EDITAR USUARIO */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.activo {
+    display: flex;
+}
+
+.contenedor-modal {
+    background: #fff;
+    border-radius: 25px;
+    padding: 60px 80px;
+    width: 90%;
+    max-width: 900px;     
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.titulo-modal {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 32px;      
+    color: #333;
+}
+.contenedor-modal label {
+    display: block;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    font-size: 20px;       
+    font-weight: 500;
+}
+
+.contenedor-modal input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 20px;    
+    font-size: 18px;       
+    border: 1px solid #ccc;
+    border-radius: 14px;
+}
+
+.contenedor-modal input[readonly] {
+    background-color: #f2f2f2;
+    color: #777;
+}
+
+.botones-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 25px;
+    margin-top: 45px;
+}
+
+.boton-cancelar, .boton-guardar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;   
+    cursor: pointer;
+}
+
+.boton-cancelar {
+    background-color: #FF3B3B;
+}
+
+.boton-guardar {
+    background-color: #22C55E;
+}
+
+.boton-cancelar img,
+.boton-guardar img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* MENSAJE DE ADVERTENCIA Y MENSAJE DE DATOS ACTUALIZADOS CORRECTAMENTE*/
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    min-width: 300px;
+    max-width: 400px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: entrada-toast 0.3s ease forwards;
+}
+
+.toast.saliendo {
+    animation: salida-toast 0.3s ease forwards;
+}
+
+.toast img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.toast-advertencia {
+    border-left: 6px solid #F4C91A;
+}
+
+.toast-exito {
+    border-left: 6px solid #1E6B30;
+}
+
+@keyframes entrada-toast {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes salida-toast {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(30px); }
+}
+
+/*  MODAL CERRAR SESION */
+.modal-pequeno {
+    max-width: 340px;
+    width: 90%;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.modal-pequeno .titulo-modal {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.modal-pequeno .botones-modal {
+    justify-content: center;
+    gap: 12px;
+}
+
+.boton-cancelar-outline,
+.boton-confirmar-outline {
+    flex: 1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton-cancelar-outline {
+    border: 2px solid #e63946;
+    color: #FF3B3B;
+}
+
+.boton-confirmar-outline {
+    border: 2px solid #1d4ed8;
+    color: #6098F7;
+}
+
+.boton-cancelar-outline:hover {
+    background: #fdecec;
+}
+
+.boton-confirmar-outline:hover {
+    background: #eaf0fd;
+}

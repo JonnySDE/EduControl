@@ -1,0 +1,686 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: #0F2D52; 
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: #0F2D52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    border-bottom: 4px solid #fff;
+}
+
+.logo-header img {
+    height: 70px;
+}
+
+.logos-institucionales {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logos-institucionales img {
+    height: 75px;
+    width: auto;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: white; 
+    border-right: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    
+    
+}
+
+.item-menu {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 22px 30px; 
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0F2D52;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    border: none;            
+}
+
+.item-menu:hover {
+    background-color: #e2e6ea;
+}
+
+.item-menu.active,
+.item-menu.item-activo {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    color: #0F2D52;
+    font-weight: 600;
+}
+
+.item-menu img {
+    width: 24px;
+    height: auto;
+}
+
+.dashboard-main {
+    grid-area: main;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* --- Footer --- */
+.dashboard-footer {
+    grid-area: footer;
+    background-color: #0F2D52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    padding: 0 40px; 
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    min-height: 85px; 
+}
+
+.dashboard-footer img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA EL MÓDULO REGISTRO
+   ========================================= */
+
+.item-menu.item-activo {
+    background-color: #cbd5e1; 
+    border-radius: 10px;
+    margin: 0 15px; 
+}
+
+.seccion-encabezado {
+    width: 100%;
+    max-width: 1150px;
+    margin-bottom: 35px;
+    text-align: left; 
+}
+
+.titulo-modulo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.titulo-modulo h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.icono-modulo {
+    width: 45px;
+    height: auto;
+}
+
+.instruccion-modulo {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 400;
+}
+
+.contenedor-tarjetas-registro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.tarjeta-opcion {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 35px; 
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); 
+    transition: transform 0.2s;
+}
+
+.tarjeta-opcion:hover {
+    transform: translateY(-3px); 
+}
+
+.tarjeta-opcion h3 {
+    font-size: 1.3rem;
+    color: #0F2D52; 
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.tarjeta-opcion p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+    min-height: 48px; 
+}
+
+.boton-flecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #153258;
+    width: 75px;
+    height: 40px;
+    border-radius: 20px; 
+    transition: background-color 0.3s;
+}
+
+.boton-flecha:hover {
+    background-color: #0d213a;
+}
+
+.boton-flecha img {
+    width: 18px;
+    height: auto;
+    transform: scaleX(-1); 
+    filter: brightness(0) invert(1); 
+}
+
+/* =========================================
+    REGISTRO EXAMEN
+   ========================================= */
+
+.contenedor-formulario-examen {
+    width: 100%;
+    max-width: 1150px;
+    background-color: transparent;
+    text-align: left;
+}
+
+.titulo-formulario {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.datos-examen-superior {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.campo-lineal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.input-linea {
+    border: none;
+    border-bottom: 1px solid #666;
+    background: transparent;
+    outline: none;
+    font-size: 1.3rem;
+    padding: 2px 5px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.campos-reducidos-fila {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.campo-bloque-corto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.input-pildora {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #555;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #fff;
+}
+
+.tabla-registro-examen {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    font-size: 1.3rem;
+}
+
+.tabla-registro-examen th {
+    background-color: #729ecb;
+    color: #000000;
+    font-weight: 700;
+    padding: 15px;
+    border: 1px solid #4a4a4a;
+    text-align: center;
+}
+
+.tabla-registro-examen td {
+    padding: 12px;
+    border: 1px solid #a0a0a0;
+    text-align: center;
+    color: #333;
+}
+
+.tabla-registro-examen td.nombre-alumno-celda {
+    font-weight: 500;
+}
+
+.input-tabla-pildora {
+    width: 140px;
+    height: 38px;
+    border: 1px solid #666;
+    border-radius: 18px;
+    outline: none;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.input-tabla-linea {
+    width: 85%;
+    border: none;
+    border-bottom: 1px solid #666;
+    background: transparent;
+    outline: none;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.contenedor-boton-guardar {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.boton-guardar-verde {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #10b981;
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 12px 35px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    cursor: pointer;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+}
+
+.boton-guardar-verde:hover {
+    background-color: #059669;
+}
+
+.icono-guardar {
+    width: 22px;
+    height: auto;
+    filter: brightness(0);
+}
+
+.select-pildora {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #555;
+    border-radius: 15px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 1.1rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.boton-accion-tabla {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e3a5f;
+}
+
+.boton-accion-tabla:hover {
+    color: #000;
+}
+
+.boton-accion-tabla img {
+    width: 28px;
+    height: auto;
+    filter: brightness(0) cubic-bezier(0, 0, 0, 1);
+}
+
+.subcabecera-asistencia th {
+    background-color: #ffffff !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 3px !important;
+    border: 1px solid #a0a0a0 !important;
+}
+
+.radio-asistencia {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+}
+
+.radio-asistencia input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-asistencia span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 26px;
+    width: 26px;
+    background-color: transparent;
+    border: 1px solid #4a4a4a;
+    border-radius: 50%;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.check-verde input:checked ~ span {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.check-rojo input:checked ~ span {
+    background-color: #ff4757;
+    border-color: #ff4757;
+}
+
+.check-amarillo input:checked ~ span {
+    background-color: #f1c40f;
+    border-color: #f1c40f;
+}
+
+.input-puntos {
+    width: 70px; 
+    text-align: center;
+    padding: 0 5px;
+}
+
+.input-puntos::-webkit-inner-spin-button, 
+.input-puntos::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* =========================================
+    CONTENEDOR GLOBAL DE TOASTS
+   ========================================= */
+.contenedor-toasts {
+    position: fixed !important;
+    top: 110px !important; /* Desplazado para que quede debajo del Header azul */
+    right: 30px !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    pointer-events: none !important; /* Permite clicks detrás si está oculto */
+}
+
+/* =========================================
+    ALERTAS COMPACTAS INDIVIDUALES
+   ========================================= */
+.alerta-emergente {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+    
+    /* Forzado estricto de tamaño de tarjeta */
+    width: max-content !important;
+    min-width: 280px !important;
+    max-width: 380px !important;
+    height: auto !important;
+    min-height: unset !important;
+    
+    background-color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 12px 20px !important;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15) !important;
+    
+    /* Animación de entrada sutil */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s !important;
+}
+
+/* Mostrar alerta */
+.alerta-emergente.mostrar {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+}
+
+.alerta-texto {
+    display: block !important;
+    color: #000000 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+}
+
+#alertaExito {
+    border: 2px solid #2ecc71 !important;
+}
+
+.alerta-advertencia {
+    border: 2px solid #f1c40f !important;
+}
+
+.alerta-icono {
+    color: #2ecc71 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    flex-shrink: 0 !important;
+}
+/* --- BLINDAJE DE DISTRIBUCIÓN GLOBAL --- */
+
+/* Asegura que el cuerpo ocupe la pantalla correctamente sin desparramarse */
+body.dashboard-body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    overflow-x: hidden; /* Evita desajustes horizontales */
+}
+
+/* Controla el tamaño real del header superior */
+header.dashboard-header {
+    height: 90px !important; /* Forzamos el alto exacto del encabezado azul */
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #102a43; /* Tu azul oscuro */
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+/* EL MAGO DEL ORDEN: Divide el espacio en 2 columnas perfectas */
+.layout-contenedor-principal {
+    display: grid !important;
+    grid-template-columns: 260px 1fr !important; /* Sidebar fijo a 260px, contenido toma el resto */
+    width: 100% !important;
+    min-height: calc(100vh - 150px); /* Ajusta el alto restando el header y footer */
+    box-sizing: border-box;
+}
+
+/* Congela la barra lateral para que no se altere con el zoom */
+aside.dashboard-sidebar {
+    width: 260px !important;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    box-sizing: border-box;
+}
+
+/* Espacio exclusivo y fluido para tus tarjetas blancas */
+main.dashboard-main {
+    padding: 40px !important;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* La tarjeta contenedora blanca */
+.tarjeta-blanca-contenido {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px; /* Evita que se estire infinitamente en pantallas gigantes */
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Controla el footer abajo */
+footer.dashboard-footer {
+    width: 100% !important;
+    height: 60px;
+    box-sizing: border-box;
+    margin-top: auto; /* Lo empuja siempre al fondo de la página */
+}
+/* --- REGRESAR LA BARRA LATERAL A LA VIDA --- */
+aside.dashboard-sidebar {
+    width: 260px !important;
+    min-width: 260px !important;
+    background-color: #ffffff !important; /* Fuerza el fondo blanco de la barra */
+    border-right: 1px solid #e2e8f0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important; /* Quita cualquier position absolute que la esconda */
+    left: 0 !important;
+    top: 0 !important;
+    box-sizing: border-box;
+    z-index: 10; /* Asegura que se posicione al frente */
+}
+
+.menu-lateral {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+main.dashboard-main {
+    padding: 40px !important;
+    background-color: #f8fafc !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    overflow-y: auto; 
+}
+
+body.dashboard-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important; 
+    width: 100% !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+div.layout-contenedor-principal {
+    display: grid !important;
+    grid-template-columns: 260px 1fr !important; 
+    justify-content: start !important;
+    align-items: start !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+div.layout-contenedor-principal aside.dashboard-sidebar {
+    grid-column: 1 !important; 
+    position: static !important;
+    width: 260px !important;
+    min-width: 260px !important;
+    max-width: 260px !important;
+    height: 100% !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+}
+
+div.layout-contenedor-principal main.dashboard-main {
+    grid-column: 2 !important; 
+    width: 100% !important;
+    padding: 40px !important;
+    box-sizing: border-box !important;
+}
