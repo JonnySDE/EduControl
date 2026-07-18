@@ -6,12 +6,17 @@ let listaDocentes = [];
 let mapaAsignaciones = {}; // idGrupo -> idUsuario
 let grupoSeleccionadoId = null;
 let resumenActual = null; // { idGrupo, grado, grupoLetra, nombreDocente }
+let idGrupoPropioDocente = null; // solo aplica si rolUsuarioActual !== 'Director'
 
 document.addEventListener('DOMContentLoaded', async () => {
     const sesion = await obtenerSesion();
     if (!sesion) return;
 
     rolUsuarioActual = sesion.rol;
+
+    if (rolUsuarioActual !== 'Director') {
+        await cargarMiGrupo();
+    }
 
     ajustarUIPorRol();
     await cargarDocentes();
@@ -21,6 +26,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     inicializarEventosGlobales();
     inicializarModales();
 });
+
+async function cargarMiGrupo() {
+    try {
+        const response = await fetch(`${API_URL}/mi-grupo`, { credentials: 'include' });
+        if (!response.ok) return;
+        const grupo = await response.json();
+        idGrupoPropioDocente = grupo.idGrupo;
+    } catch (error) {
+        console.error('Error cargando mi grupo:', error);
+    }
+}
 
 // ==========================================================
 // SESIÓN Y PERMISOS
@@ -191,8 +207,12 @@ async function cargarResumenGrupo(idGrupo, grado, grupoLetra, nombreDocente) {
     const selectPeriodo = document.getElementById('select-periodo-resumen');
     const periodo = selectPeriodo ? selectPeriodo.value : '1';
 
+    const endpoint = rolUsuarioActual === 'Director'
+        ? `${API_URL}/promedio/grupo?idGrupo=${idGrupo}&periodo=${periodo}`
+        : `${API_URL}/promedio/mi-grupo?periodo=${periodo}`;
+
     try {
-        const response = await fetch(`${API_URL}/promedio/grupo?idGrupo=${idGrupo}&periodo=${periodo}`, { credentials: 'include' });
+        const response = await fetch(endpoint, { credentials: 'include' });
         if (!response.ok) {
             mostrarToast('advertencia', 'No se pudo cargar el rendimiento de este grupo');
             return;
@@ -266,6 +286,11 @@ function inicializarEventosGlobales() {
             const grado = fila.querySelector('.celda-grado').innerText.trim();
             const grupoLetra = fila.querySelector('.celda-grupo').innerText.trim();
             const docente = fila.querySelector('.celda-docente').innerText.trim();
+
+            if (rolUsuarioActual !== 'Director' && idGrupoPropioDocente && parseInt(idGrupo) !== idGrupoPropioDocente) {
+                mostrarToast('advertencia', 'Solo puedes ver el resumen de tu propio grupo.');
+                return;
+            }
 
             if (modalVerResumen) {
                 modalVerResumen.classList.add('modal-activo');
