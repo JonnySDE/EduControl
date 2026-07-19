@@ -104,8 +104,7 @@ public class AlumnoController {
                 String apellidoMaterno = (String) body.get("apellidoMaterno");
                 int numeroLista = ((Number) body.get("numeroLista")).intValue();
 
-                // Si es Docente: SIEMPRE se usa su propio grupo (ignoramos lo que mande el front)
-                // Si es Director: se respeta el idGrupo que mande en el body
+
                 Integer idGrupoDocente = SeguridadUtil.obtenerGrupoDelDocente(ctx);
                 int idGrupoFinal;
 
@@ -117,6 +116,19 @@ public class AlumnoController {
                         return;
                     }
                     idGrupoFinal = ((Number) body.get("idGrupo")).intValue();
+                }
+
+                // Validacion 1: la matricula es unica en TODA la escuela, no puede repetirse
+                if (dao.obtenerPorMatricula(matricula) != null) {
+                    ctx.status(409).result("Ya existe un alumno con la matrícula " + matricula + ". La matrícula debe ser única.");
+                    return;
+                }
+
+                // Validacion 2: el numero de lista debe ser unico DENTRO del mismo grupo
+                AlumnoGrupo yaOcupado = alumnoGrupoDAO.obtenerPorGrupoYNumeroLista(idGrupoFinal, numeroLista);
+                if (yaOcupado != null) {
+                    ctx.status(409).result("Ya existe otro alumno con el número de lista " + numeroLista + " en este grupo. Elige otro número.");
+                    return;
                 }
 
                 Alumno alumno = new Alumno(matricula, nombre, apellidoPaterno, apellidoMaterno);
@@ -167,6 +179,13 @@ public class AlumnoController {
                         idGrupoFinal = body.get("idGrupo") != null
                             ? ((Number) body.get("idGrupo")).intValue()
                             : alumnoGrupoDAO.obtenerPorMatricula(matricula).getIdGrupo();
+                    }
+
+                    // Validacion: el numero de lista debe ser unico en el grupo destino
+                    AlumnoGrupo yaOcupado = alumnoGrupoDAO.obtenerPorGrupoYNumeroLista(idGrupoFinal, numeroLista);
+                    if (yaOcupado != null && yaOcupado.getMatricula() != matricula) {
+                        ctx.status(409).result("Ya existe otro alumno con el número de lista " + numeroLista + " en ese grupo. Elige otro número.");
+                        return;
                     }
 
                     alumnoGrupoDAO.cambiarGrupo(matricula, idGrupoFinal, numeroLista);

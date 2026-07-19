@@ -60,6 +60,25 @@ public class AlumnoGrupoDAO {
         return lista;
     }
 
+    // Busca si ya existe un alumno con ese numeroLista en ese grupo
+    // (para validar antes de crear/mover a un alumno, y evitar duplicados dentro del mismo grupo)
+    public AlumnoGrupo obtenerPorGrupoYNumeroLista(int idGrupo, int numeroLista) throws SQLException {
+        String sql = "SELECT * FROM alumno_grupo WHERE idGrupo = ? AND NumeroLista = ?";
+
+        try (Connection conn = Main.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idGrupo);
+            stmt.setInt(2, numeroLista);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapear(rs);
+            }
+        }
+        return null;
+    }
+
     public void crear(AlumnoGrupo ag) throws SQLException {
         String sql = "INSERT INTO alumno_grupo (Matricula, NumeroLista, idGrupo) VALUES (?, ?, ?)";
 

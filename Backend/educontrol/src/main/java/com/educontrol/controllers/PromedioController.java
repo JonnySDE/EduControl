@@ -251,7 +251,9 @@ public class PromedioController {
 
     public static Map<String, Object> calcularPromedio(int idUsuario, int matricula, int idCampoFormativo, int idPeriodo, int grado) throws SQLException {
 
-
+        // --- Resolver el periodo ANCLA (para Asistencia/Disciplina) ---
+        // idPeriodo llega como el especifico de ESTA materia; necesitamos el idGrupo y el texto
+        // de periodo para encontrar el ancla real (menor idCampoFormativo) del grupo+periodo.
         Periodo periodoMateria = periodoDAO.obtenerPorId(idPeriodo);
         if (periodoMateria == null) {
             throw new SQLException("El periodo especificado (" + idPeriodo + ") no existe.");
@@ -274,16 +276,22 @@ public class PromedioController {
         int pctAsistencia = configAsistencia != null ? configAsistencia.getPorcentaje() : 0;
         int pctDisciplina = configDisciplina != null ? configDisciplina.getPorcentaje() : 0;
 
-        // --- 1. TAREA 
+        // --- 1. TAREA (usa idPeriodo especifico de la materia) ---
+        // "Entrego" cuenta como entrega completa (peso 1.0). "Incompleta" cuenta como
+        // media entrega (peso 0.5, decision confirmada con el cliente). "No entrego" no suma nada.
         List<RegistroTarea> tareas = registroTareaDAO.listarPorAlumnoCampoPeriodo(matricula, idCampoFormativo, idPeriodo);
         double resultadoTarea = 0;
         if (!tareas.isEmpty()) {
-            long entregadas = tareas.stream().filter(t -> "Entrego".equals(t.getEstatus())).count();
-            double proporcion = (double) entregadas / tareas.size();
+            double sumaPonderada = tareas.stream().mapToDouble(t -> {
+                if ("Entrego".equals(t.getEstatus())) return 1.0;
+                if ("Incompleta".equals(t.getEstatus())) return 0.5;
+                return 0.0; // "No entrego"
+            }).sum();
+            double proporcion = sumaPonderada / tareas.size();
             resultadoTarea = proporcion * 10 * (pctTarea / 100.0);
         }
 
-        // --- 2. EXAMEN 
+        // --- 2. EXAMEN (usa idPeriodo especifico de la materia) ---
         List<RegistroExamen> examenes = registroExamenDAO.listarPorAlumnoCampoPeriodo(matricula, idCampoFormativo, idPeriodo);
         double resultadoExamen = 0;
         if (!examenes.isEmpty()) {
@@ -302,16 +310,18 @@ public class PromedioController {
             }
         }
 
-        // --- 3. PARTICIPACION 
+        // --- 3. PARTICIPACION (usa idPeriodo especifico de la materia) ---
         List<RegistroParticipacion> participaciones = registroParticipacionDAO.listarPorAlumnoCampoPeriodo(matricula, idCampoFormativo, idPeriodo);
         double resultadoParticipacion = 0;
         if (!participaciones.isEmpty()) {
-            double sumaPuntuaciones = participaciones.stream().mapToDouble(RegistroParticipacion::getPuntuacion).sum();
-            double promedioPuntuacion = sumaPuntuaciones / participaciones.size();
-            resultadoParticipacion = promedioPuntuacion * (pctParticipacion / 100.0);
+            double sumaPuntuacionesReales = participaciones.stream()
+                .mapToDouble(p -> (p.getPuntuacion() - 5.0) * 2.0)
+                .sum();
+            double promedioPuntuacionReal = sumaPuntuacionesReales / participaciones.size();
+            resultadoParticipacion = promedioPuntuacionReal * (pctParticipacion / 100.0);
         }
 
-        // --- 4. ASISTENCIA 
+        // --- 4. ASISTENCIA (usa el idPeriodo ANCLA, NO el de la materia) ---
         List<RegistroAsistencia> asistencias = registroAsistenciaDAO.listarPorAlumnoPeriodo(matricula, idPeriodoAncla);
         double resultadoAsistencia = 0;
         if (!asistencias.isEmpty()) {
@@ -320,12 +330,12 @@ public class PromedioController {
             resultadoAsistencia = proporcion * 10 * (pctAsistencia / 100.0);
         }
 
-        // --- 5. DISCIPLINA 
+        // --- 5. DISCIPLINA (usa el idPeriodo ANCLA, NO el de la materia) ---
         int sumaPuntosMenos = registroDisciplinaDAO.sumarPuntosMenosPorAlumnoPeriodo(matricula, idPeriodoAncla);
         double calificacionDisciplina = Math.max(0, 10 - sumaPuntosMenos);
         double resultadoDisciplina = calificacionDisciplina * (pctDisciplina / 100.0);
 
-        // --- SUMA FINAL
+        // --- SUMA FINAL, con clamping a [5, 10] (regla de negocio del cliente + limite fisico del CHECK de la BD) ---
         double sumaFinal = resultadoTarea + resultadoExamen + resultadoParticipacion + resultadoAsistencia + resultadoDisciplina;
         double promedioFinalDouble = Math.min(10.0, Math.max(5.0, sumaFinal));
 

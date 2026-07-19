@@ -50,6 +50,10 @@ async function inicializarSelectorGrupoDirector() {
     select.id = 'select-grupo-director';
     select.innerHTML = '<option value="">Selecciona...</option>';
 
+    const wrapperSelect = document.createElement('div');
+    wrapperSelect.className = 'select-personalizado';
+    wrapperSelect.appendChild(select);
+
     try {
         const response = await fetch(`${API_URL}/grupos`, { credentials: 'include' });
         const grupos = await response.json();
@@ -64,7 +68,7 @@ async function inicializarSelectorGrupoDirector() {
         console.error('Error cargando grupos:', error);
     }
 
-    contenedor.appendChild(select);
+    contenedor.appendChild(wrapperSelect);
     barraFiltros.insertBefore(contenedor, barraFiltros.lastElementChild);
 
     document.getElementById('tipoReporte').addEventListener('change', () => {

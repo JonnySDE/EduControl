@@ -2,17 +2,29 @@ const API_URL = 'http://localhost:7000';
 const UMBRAL_APROBATORIO = 6;
 
 let chartRendimientoCampos = null;
+let rolActual = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const sesion = await obtenerSesion();
     if (!sesion) return;
 
-    if (sesion.rol === 'Director') {
-        await cargarDashboardDirector();
-    } else {
-        await cargarDashboardDocente();
+    rolActual = sesion.rol;
+
+    const selectPeriodo = document.getElementById('select-periodo-dashboard');
+    if (selectPeriodo) {
+        selectPeriodo.addEventListener('change', () => cargarDashboard(selectPeriodo.value));
     }
+
+    await cargarDashboard('1');
 });
+
+async function cargarDashboard(periodo) {
+    if (rolActual === 'Director') {
+        await cargarDashboardDirector(periodo);
+    } else {
+        await cargarDashboardDocente(periodo);
+    }
+}
 
 async function obtenerSesion() {
     try {
@@ -32,14 +44,14 @@ async function obtenerSesion() {
 // DOCENTE: solo su propio grupo
 // ==========================================================
 
-async function cargarDashboardDocente() {
+async function cargarDashboardDocente(periodo) {
     try {
         const resGrupo = await fetch(`${API_URL}/mi-grupo`, { credentials: 'include' });
         if (!resGrupo.ok) return;
         const grupo = await resGrupo.json();
         const nombreGrupo = `${grupo.grado}° ${grupo.grupo}`;
 
-        const resPromedios = await fetch(`${API_URL}/promedio/mi-grupo?periodo=1`, { credentials: 'include' });
+        const resPromedios = await fetch(`${API_URL}/promedio/mi-grupo?periodo=${periodo}`, { credentials: 'include' });
         const datos = await resPromedios.json();
 
         const totalAlumnos = new Set(datos.map(d => d.matricula)).size;
@@ -59,7 +71,7 @@ async function cargarDashboardDocente() {
 // DIRECTOR: toda la escuela, comparando todos los grupos
 // ==========================================================
 
-async function cargarDashboardDirector() {
+async function cargarDashboardDirector(periodo) {
     try {
         const resGrupos = await fetch(`${API_URL}/grupos`, { credentials: 'include' });
         const grupos = await resGrupos.json();
@@ -72,7 +84,7 @@ async function cargarDashboardDirector() {
         const acumuladoPorCampo = new Map();
 
         for (const grupo of grupos) {
-            const response = await fetch(`${API_URL}/promedio/grupo?idGrupo=${grupo.idGrupo}&periodo=1`, { credentials: 'include' });
+            const response = await fetch(`${API_URL}/promedio/grupo?idGrupo=${grupo.idGrupo}&periodo=${periodo}`, { credentials: 'include' });
             if (!response.ok) continue;
             const datos = await response.json();
 

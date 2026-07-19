@@ -3,6 +3,7 @@ const UMBRAL_APROBATORIO = 6;
 
 let rolActual = null;
 let idGrupoSeleccionado = null;
+let periodoSeleccionado = '1';
 let chartAprobados = null;
 let chartReprobados = null;
 let chartPeriodos = null;
@@ -11,6 +12,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sesion = await obtenerSesion();
     if (!sesion) return;
     rolActual = sesion.rol;
+
+    inicializarSelectorPeriodo();
 
     if (rolActual === 'Director') {
         await inicializarComoDirector();
@@ -34,8 +37,34 @@ async function obtenerSesion() {
     }
 }
 
-async function inicializarComoDirector() {
+function inicializarSelectorPeriodo() {
     const titulo = document.querySelector('.titulo-formulario');
+
+    const contenedorSelect = document.createElement('div');
+    contenedorSelect.id = 'contenedor-select-periodo';
+    contenedorSelect.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:20px;';
+    contenedorSelect.innerHTML = `<label style="font-weight:600; color:#0b2545; font-size:14px;">Periodo:</label>`;
+
+    const selectPeriodo = document.createElement('select');
+    selectPeriodo.id = 'select-periodo-estadisticas';
+    selectPeriodo.style.cssText = 'padding:6px 12px; border-radius:20px; border:1px solid #0b2545;';
+    selectPeriodo.innerHTML = `
+        <option value="1">Primer periodo</option>
+        <option value="2">Segundo periodo</option>
+        <option value="3">Tercer periodo</option>
+    `;
+    contenedorSelect.appendChild(selectPeriodo);
+
+    titulo.insertAdjacentElement('afterend', contenedorSelect);
+
+    selectPeriodo.addEventListener('change', () => {
+        periodoSeleccionado = selectPeriodo.value;
+        if (idGrupoSeleccionado) cargarEstadisticas();
+    });
+}
+
+async function inicializarComoDirector() {
+    const contenedorSelectPeriodo = document.getElementById('contenedor-select-periodo');
 
     const contenedorSelect = document.createElement('div');
     contenedorSelect.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:20px;';
@@ -49,7 +78,7 @@ async function inicializarComoDirector() {
     selectGrupos.innerHTML = '<option value="">Selecciona un grupo...</option>';
     contenedorSelect.appendChild(selectGrupos);
 
-    titulo.insertAdjacentElement('afterend', contenedorSelect);
+    contenedorSelectPeriodo.insertAdjacentElement('afterend', contenedorSelect);
 
     try {
         const response = await fetch(`${API_URL}/grupos`, { credentials: 'include' });
@@ -74,14 +103,15 @@ async function cargarEstadisticas() {
     if (!idGrupoSeleccionado) return;
 
     try {
-        const [datosP1, datosP2, datosP3, asistencia] = await Promise.all([
+        const [datosSeleccionado, datosP1, datosP2, datosP3, asistencia] = await Promise.all([
+            obtenerPromedios(periodoSeleccionado),
             obtenerPromedios('1'),
             obtenerPromedios('2'),
             obtenerPromedios('3'),
-            obtenerAsistencia('1')
+            obtenerAsistencia(periodoSeleccionado)
         ]);
 
-        const promediosAlumno = calcularPromedioPorAlumno(datosP1);
+        const promediosAlumno = calcularPromedioPorAlumno(datosSeleccionado);
         const totalAlumnos = promediosAlumno.length;
         const aprobados = promediosAlumno.filter(p => p >= UMBRAL_APROBATORIO).length;
         const reprobados = totalAlumnos - aprobados;
@@ -99,6 +129,7 @@ async function cargarEstadisticas() {
         dibujarDona('canvasAprobados', pctAprobados, '#1cc88a');
         dibujarDona('canvasReprobados', pctReprobados, '#e74c3c');
 
+        // La gráfica de Periodos siempre compara los 3, sin importar cuál esté seleccionado arriba
         const promedioP1 = promedioGeneralDe(datosP1);
         const promedioP2 = promedioGeneralDe(datosP2);
         const promedioP3 = promedioGeneralDe(datosP3);

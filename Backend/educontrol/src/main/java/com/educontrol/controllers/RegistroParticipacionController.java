@@ -11,6 +11,7 @@ import io.javalin.Javalin;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 public class RegistroParticipacionController {
@@ -20,11 +21,22 @@ public class RegistroParticipacionController {
     private static final ConfigParticipacionDAO configParticipacionDAO = new ConfigParticipacionDAO();
     private static final PeriodoDAO periodoDAO = new PeriodoDAO();
 
+    // Revierte la conversion 5-10 -> 0-10 SOLO para exponerla en las respuestas GET.
+    // No toca la base de datos: opera sobre el objeto ya leido en memoria antes de mandarlo como JSON.
+    private static RegistroParticipacion conPuntuacionReal(RegistroParticipacion registro) {
+        if (registro == null) return null;
+        float puntuacionReal = (registro.getPuntuacion() - 5f) * 2f;
+        registro.setPuntuacion(puntuacionReal);
+        return registro;
+    }
+
     public static void registrarRutas(Javalin app) {
 
         app.get("/registro-participacion", ctx -> {
             try {
-                ctx.json(dao.listarTodos());
+                List<RegistroParticipacion> lista = dao.listarTodos();
+                lista.forEach(RegistroParticipacionController::conPuntuacionReal);
+                ctx.json(lista);
             } catch (SQLException e) {
                 ctx.status(500).result("Error: " + e.getMessage());
             }
@@ -45,13 +57,13 @@ public class RegistroParticipacionController {
                     return;
                 }
 
-                ctx.json(registro);
+                ctx.json(conPuntuacionReal(registro));
             } catch (SQLException e) {
                 ctx.status(500).result("Error: " + e.getMessage());
             }
         });
 
-        // Body esperado: { matricula, idCampoFormativo, puntuacion } (rango 5-10, segun tu CHECK)
+        // Body esperado: { matricula, idCampoFormativo, puntuacion } (rango 0-10, ver nota abajo)
         app.post("/registro-participacion", ctx -> {
             try {
                 Integer idUsuarioSesion = ctx.sessionAttribute("idUsuario");
@@ -63,7 +75,14 @@ public class RegistroParticipacionController {
                 Map<String, Object> body = ctx.bodyAsClass(Map.class);
                 int matricula = ((Number) body.get("matricula")).intValue();
                 int idCampoFormativo = ((Number) body.get("idCampoFormativo")).intValue();
-                float puntuacion = ((Number) body.get("puntuacion")).floatValue();
+                float puntuacionReal = ((Number) body.get("puntuacion")).floatValue();
+
+                if (puntuacionReal < 0 || puntuacionReal > 10) {
+                    ctx.status(400).result("La puntuación debe estar entre 0 y 10");
+                    return;
+                }
+
+                float puntuacionParaGuardar = 5f + (puntuacionReal / 10f) * 5f;
 
                 if (!SeguridadUtil.alumnoPerteneceAGrupoDocente(ctx, matricula)) {
                     ctx.status(403).result("No tienes permiso para registrar participación de este alumno");
@@ -92,7 +111,7 @@ public class RegistroParticipacionController {
 
                 RegistroParticipacion registro = new RegistroParticipacion(
                     0,
-                    puntuacion,
+                    puntuacionParaGuardar,
                     LocalDate.now(),
                     matricula,
                     configParticipacion.getIdParticipacion(),
@@ -130,8 +149,15 @@ public class RegistroParticipacionController {
                 }
 
                 Map<String, Object> body = ctx.bodyAsClass(Map.class);
-                float puntuacion = ((Number) body.get("puntuacion")).floatValue();
-                existente.setPuntuacion(puntuacion);
+                float puntuacionReal = ((Number) body.get("puntuacion")).floatValue();
+
+                if (puntuacionReal < 0 || puntuacionReal > 10) {
+                    ctx.status(400).result("La puntuación debe estar entre 0 y 10");
+                    return;
+                }
+
+                float puntuacionParaGuardar = 5f + (puntuacionReal / 10f) * 5f;
+                existente.setPuntuacion(puntuacionParaGuardar);
 
                 dao.actualizar(existente);
                 ctx.result("Registro de participación actualizado correctamente");
