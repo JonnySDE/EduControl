@@ -112,3 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// MOSTRAR / OCULTAR CONTRASEÑA
+document.addEventListener('DOMContentLoaded', () => {
+    const inputPassword = document.getElementById('password');
+    const iconoOjo = document.getElementById('icono-ojo-password');
+
+    if (inputPassword && iconoOjo) {
+        iconoOjo.addEventListener('click', () => {
+            const esPassword = inputPassword.type === 'password';
+            inputPassword.type = esPassword ? 'text' : 'password';
+
+            // Cambia el ícono según el estado (ajusta las rutas a como tú las acomodes)
+            iconoOjo.src = esPassword ? 'Img/IconosAcciones/ojoAbierto.svg' : 'Img/IconosAcciones/ojoCerrado.svg';
+            iconoOjo.alt = esPassword ? 'Ocultar contraseña' : 'Mostrar contraseña';
+        });
+    }
+});

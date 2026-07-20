@@ -299,3 +299,13 @@ body {
     width: 18px;
     height: auto;
 }
+
+.icono-ojo-password {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    user-select: none;
+}

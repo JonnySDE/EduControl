@@ -8,6 +8,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Estilos del ícono de mostrar/ocultar contraseña (autocontenidos, no dependen de style.css) */
+        .grupo-input-password {
+            position: relative;
+        }
+
+        .grupo-input-password input {
+            width: 100%;
+            padding-right: 42px; /* deja espacio para que el texto no quede debajo del ícono */
+            box-sizing: border-box;
+        }
+
+        .icono-ojo-password {
+            position: absolute;
+            right: 12px;
+            top: 38px; /* ajusta si tu label ocupa otra altura */
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
     <div class="contenedor-principal">
@@ -42,9 +64,10 @@
                         <input type="text" id="usuario" required>
                     </div>
 
-                    <div class="grupo-input">
+                    <div class="grupo-input grupo-input-password">
                         <label for="password">Contraseña</label>
                         <input type="password" id="password" required>
+                        <img src="Img/IconosAcciones/ojoCerrado.svg" id="icono-ojo-password" class="icono-ojo-password" alt="Mostrar contraseña">
                     </div>
 
                     <a href="/Frontend/Paginas/Recuperar.html" class="enlace-olvido">¿Olvidó su contraseña?</a>
